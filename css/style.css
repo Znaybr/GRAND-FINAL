@@ -1,5 +1,33 @@
 
 /* header */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#langage {
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    margin-left: 55%;
+    right: 0;
+}
+
+
+#langage img {
+    display: inline;
+    width: 15px;
+    height: 15px;
+    right: 0;
+}
+
+#langage p {
+    display: inline;
+    font-weight: lighter;
+    width: 9%;
+}
+
+
 
 li{
     display: inline-block;

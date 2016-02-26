@@ -1,11 +1,5 @@
 <?php
-$menu = array(
-    'Accueil' => 'index.php',
-    'produits'=> 'produits.php',
-    'Contact' => 'contact.php',
-    'A propos' => 'apropos.php',
-    'Reparations' => 'reparation.php',
-);
-foreach ($menu as $nom => $url) {
-    echo "<li><a href=\"$url\">$nom</a></li>";
+
+foreach ($site_data[MAIN_MENU] as $nom => $url) {
+    echo "<li><a href=\"$url\">" . tr($nom) . "</a></li>";
 }

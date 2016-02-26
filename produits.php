@@ -1,4 +1,5 @@
 <?php
+require_once 'common/start.php';
 /**
  * Created by PhpStorm.
  * User: ctack
