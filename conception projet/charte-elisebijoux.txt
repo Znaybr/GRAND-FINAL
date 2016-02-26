@@ -1,0 +1,12 @@
+menu
+Gris clair  	: #c4bdb7
+
+lignes + hover
+bleu clai 	: #8bd3e0
+
+nom produit
+bleu gris foncé : #41676e
+
+description produit
+gris foncé 		: #6e6960
+ 
