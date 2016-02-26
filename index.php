@@ -1,17 +1,19 @@
+
+
+<link rel = "stylesheet"  type="text/css"  href = "css/style.css" />
 <?php
-    // initialisation ici
+require_once '_defines.php';
+require_once 'data/main_data.php';
+$site_data[PAGE_ID] = 'index';
+require_once 'view_parts/_page_base.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
+<div id="main"></div>
 
-<p>Bonjour Chris </p>
-<p>Bonjour Chris </p>
+<?php
+require_once 'view_parts/_page_buttom.php';
+?>
 
-</body>
-</html>
+
+
+
