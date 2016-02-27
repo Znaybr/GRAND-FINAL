@@ -56,3 +56,7 @@ li{
     width: 20px;
 }
 
+#image_index img {
+    height: 200px;
+    width: 200px;
+}
