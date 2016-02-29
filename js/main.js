@@ -6,8 +6,11 @@ function valider() {
     //  - si true, il sera soummis
     var est_valide = false;
 
-    var password_ok = (document.admin.password.value = "egypte");
-    console.log(nom_ok ? 'nom valide' : 'nom pas valide');
+    var password_ok = (document.adminco.password.value = "egypte");
+    console.log(password_ok ? 'pass valide' : 'pass pas valide');
+
+    $(infos_admin).show();
+
 }
 
 

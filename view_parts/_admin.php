@@ -35,26 +35,7 @@ header('location' . ADMIN_PAGE);
 
 <body>
 
-<div id="admin">
-  <img src="../images/imagesweb/logo.png" alt="logo Bijoux d'Élise" title="Entrée sur la partie admin">
-  <img src="../images/imagesweb/separation.png" alt="tiret de séparation" title="sparation des catégories">
-  <p>Bonjour Élise</p>
 
-
-  <?php if(!check_login()) { ?>
-    <!--Si l'utilisateur n'est pas connecté-->
-    <form name="admin" id="admin" method="post">
-      <input type="text" id="username" name="username">
-      <input type="text" id="password" name="password">
-      <input type="submit" id="dologin" name="dologin" value="Go">
-    </form>
-  <?php } else { ?>
-    <!--Si l'utilisateur est connecté-->
-    <form id="logout" name="logout" method="post">
-      <input type="submit" name="dologout" id="dologout" value="Quitter"/>
-    </form>
-  <?php } ?>
-</div>
 
 
 </body>

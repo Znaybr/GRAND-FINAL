@@ -38,7 +38,7 @@
 
 #admin input:nth-of-type(1){
     display: block;
-    margin: 0 auto;
+    margin: 15px auto 0 auto;
     width: 150px;
     border: 1px solid #c4bdb7;
     box-shadow: 0 0 1px #c4bdb7 inset;
@@ -46,8 +46,8 @@
 
 #admin input[type="submit"]{
     display: block;
-    margin: 10px auto;
-    width: 100px;
+    margin: 5px auto;
+    width: 80px;
     background-color: #8bd3e0;
     border: 1px solid #c4bdb7;
     color: white;
@@ -57,3 +57,7 @@
 /**************************************************************/
 /*************************CONNECTION IN************************/
 /**************************************************************/
+
+#infos_admin{
+    display: none;
+}
