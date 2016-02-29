@@ -1,8 +1,15 @@
+<link rel = "stylesheet"  type="text/css"  href = "css/style.css" />
 <?php
+require_once 'db/P62_DBkitDem_conn.php';
+require_once '_defines.php';
 require_once 'common/start.php';
-/**
- * Created by PhpStorm.
- * User: ctack
- * Date: 2016-02-26
- * Time: 09:19
- */
+require_once 'data/_main_data.php';
+$site_data[PAGE_ID] = 'index';
+require_once 'view_parts/_page_base.php';
+?>
+
+
+
+<?php
+require_once 'view_parts/_page_buttom.php';
+?>

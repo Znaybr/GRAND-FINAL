@@ -68,7 +68,7 @@
     width: 100%;
     height: 150px;
     background-color: #8bd3e0;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 10%;
 }
 #facebook {
@@ -184,6 +184,23 @@
 #image_index img {
     height: 400px;
     width: 400px;
+}
+
+#categorie {
+    height: 160px;
+    width: 100%;
+}
+
+#categorie > div {
+    display: inline-block;
+    height: 100%;
+    width: 10%;
+    margin-left: 10%;
+}
+#cercle {
+    border-radius:50%;
+    border:2px solid #8bd3e0;
+    margin: 10px;
 }
 
 

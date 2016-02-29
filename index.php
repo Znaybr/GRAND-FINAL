@@ -36,6 +36,20 @@ require_once 'view_parts/_page_base.php';
 
         ?>
     </section>
+    <section id="categorie">
+        <div id="cercle">
+
+        </div>
+        <div id="cercle">
+
+        </div>
+        <div id="cercle">
+
+        </div>
+        <div id="cercle">
+
+        </div>
+    </section>
 </div>
 
 <?php
