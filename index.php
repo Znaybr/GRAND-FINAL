@@ -14,6 +14,8 @@ require_once 'view_parts/_page_base.php';
     <section id="img_princ">
         <?php
         $query = "SELECT * FROM produits  WHERE  id = 6";
+//        $query = "SELECT * FROM produits  WHERE  category = 1";
+
         $results = $pdo->prepare($query);
         $results->execute();
 
