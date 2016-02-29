@@ -14,15 +14,11 @@ require_once 'view_parts/_page_base.php';
     <section>
         <?php
         $query = "SELECT * FROM produits  WHERE  id = 6";
-
         $results = $pdo->prepare($query);
-
         $results->execute();
-
 
         while ($row = $results->fetch(PDO::FETCH_ASSOC))
         {
-
             $row["id"];
 
             echo
@@ -33,14 +29,7 @@ require_once 'view_parts/_page_base.php';
 
                 "<p><img src='images/" .$row['illustration']."'></p>".
 
-
-
-
                 "</div>";
-
-
-
-
         }
 
         ?>

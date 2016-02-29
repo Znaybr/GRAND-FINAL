@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;}
+
+#admin{
+    text-align: center;
+    margin: 12% auto;
+}
+
+#admin img:nth-of-type(1){
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+#admin img:nth-of-type(2){
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+}
+
+#admin p{
+    color:  #41676e;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#admin input:nth-of-type(1){
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    border: 1px solid #c4bdb7;
+    box-shadow: 0 0 1px #c4bdb7 inset;
+}
+
+#admin input:nth-of-type(2){
+    display: block;
+    margin: 10px auto;
+    width: 100px;
+    background-color: #8bd3e0;
+    border: 1px solid #c4bdb7;
+    color: white;
+}
