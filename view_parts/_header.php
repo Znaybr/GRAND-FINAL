@@ -1,7 +1,7 @@
 
-<div id="logo">
+<div id="header">
     <img src="../images/imagesweb/logo.png" alt="Logo d'Elise">
-</div>
+
 
 <div id="langage">
     <p>Langues</p>
@@ -9,9 +9,7 @@
     <img src="../images/imagesweb/picto-en.png" alt="drapeau de l'Angleterre"/>
 
 </div>
-
-
-
-<div id="header">
+<div id="menu">
     <?php require '_main_menu.php'; ?>
+</div>
 </div>
