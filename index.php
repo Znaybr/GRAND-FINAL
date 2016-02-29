@@ -11,7 +11,7 @@ require_once 'view_parts/_page_base.php';
 ?>
 
 <div id="main">
-    <section>
+    <section id="img_princ">
         <?php
         $query = "SELECT * FROM produits  WHERE  id = 6";
         $results = $pdo->prepare($query);
@@ -23,7 +23,7 @@ require_once 'view_parts/_page_base.php';
 
             echo
 
-                "<div id= 'item_fiche' >" .
+                "<div id= 'image_index' >" .
 
                 "<p>".$row['description'] ."</p>".
 
