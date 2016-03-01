@@ -1,11 +1,26 @@
-
 /**************************************************************/
 /*************************STYLE GENERAL************************/
 /**************************************************************/
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;}
+    font-family: 'Roboto', sans-serif;
+}
+
+h2{
+    color: #41676e;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+ul{
+    list-style: none;
+}
+
+
 
 
 /**************************************************************/
@@ -13,17 +28,18 @@
 /**************************************************************/
 #admin{
     text-align: center;
-    margin: 12% auto;
+    margin: 12% auto 20px auto;
 }
 
-#admin img:nth-of-type(1){
+
+#admin img:nth-of-type(1){ /*LOGO*/
     display: block;
     width: 200px;
     height: 200px;
     margin: 0 auto;
 }
 
-#admin img:nth-of-type(2){
+#admin img:nth-of-type(2){ /*SEPARATION*/
     display: block;
     width: 200px;
     margin: 20px auto;
@@ -36,7 +52,7 @@
     margin-top: 5px;
 }
 
-#admin input:nth-of-type(1){
+#admin input:nth-of-type(1){ /*CHAMP PASSWORD*/
     display: block;
     margin: 15px auto 0 auto;
     width: 150px;
@@ -44,7 +60,7 @@
     box-shadow: 0 0 1px #c4bdb7 inset;
 }
 
-#admin input[type="submit"]{
+#admin input[type="submit"]{ /*BTN_SUBMIT*/
     display: block;
     margin: 5px auto;
     width: 80px;
@@ -54,10 +70,61 @@
 }
 
 
+
+
 /**************************************************************/
 /*************************CONNECTION IN************************/
 /**************************************************************/
 
+/*Masque des boites d'infos et d'administration*/
 #infos_admin{
     display: none;
 }
+
+#infos_admin > img{
+display: block;
+width: 200px;
+margin: 20px auto;
+}
+
+#infos_admin > section{
+    width: 40%;
+    margin: 0 auto;
+}
+
+#infos_admin li:nth-of-type(1){
+    display: block;
+    margin: 0 auto 15px auto;
+    text-align: center;
+}
+
+#infos_admin input[type="file"]{
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#ajout li:nth-of-type(2) label{
+    display: inline-block;
+    width: 20%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+#ajout li:nth-of-type(2) input{
+    padding: 4px;
+    margin: 2px;
+    display: inline-block;
+    width: 75%;
+    box-sizing: border-box;
+}
+
+#ajout input[type="submit"]{ /*BTN_SUBMIT*/
+    display: block;
+    margin: 5px auto 60px auto;
+    padding: 4px;
+    width: 40%;
+    background-color: #41676e;
+    border: 1px solid #c4bdb7;
+    color: white;
+}
+
