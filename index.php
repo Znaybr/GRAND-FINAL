@@ -14,7 +14,7 @@ require_once 'view_parts/_page_base.php';
     <section id="img_princ">
         <?php
         $query = "SELECT * FROM produits  WHERE  id = 6";
-//        $query = "SELECT * FROM produits  WHERE  category = 1";
+       // $query = "SELECT * FROM produits  WHERE  categorie = 2";
 
         $results = $pdo->prepare($query);
         $results->execute();
@@ -25,18 +25,31 @@ require_once 'view_parts/_page_base.php';
 
             echo
 
+
                 "<div id= 'image_index' >" .
 
-                "<p>".$row['description'] ."</p>".
+                "<figure><img src='images/" .$row['illustration']."'></figure>".
 
-                "<p><img src='images/" .$row['illustration']."'></p>".
+                "</div>".
+
+                "<div id='details'>".
+
+                "<p>Dernière réalisation</p>".
+
+                "<h3>".$row['nom'] ."</h3>".
+
+                "<figcaption>".$row['description'] ."</figcaption>".
 
                 "</div>";
         }
 
         ?>
     </section>
+    <img src="images/imagesweb/separation.png" alt="ligne de séparation" class="separ"/>
     <section id="categorie">
+
+        <div id="cat1">
+            <a href="produits.php">
         <div id="cercle1" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =1";
@@ -59,14 +72,16 @@ require_once 'view_parts/_page_base.php';
                     ."</style>";
 
 
-
-
-
             }
             ?>
-
+            <h3>Bagues</h3>
         </div>
 
+            </a>
+        </div>
+
+        <div id="cat2">
+            <a href="produits.php">
         <div id="cercle2" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =2";
@@ -112,8 +127,12 @@ require_once 'view_parts/_page_base.php';
             }
 
             ?>
-
+            <h3>Pendentifs</h3>
         </div>
+                </a>
+        </div>
+        <div id="cat3">
+            <a href="produits.php">
         <div id="cercle3" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =3";
@@ -141,7 +160,12 @@ require_once 'view_parts/_page_base.php';
 
             }
             ?>
+            <h3>Boucles d'oreilles</h3>
         </div>
+                </a>
+        </div>
+        <div id="cat4">
+            <a href="produits.php">
         <div id="cercle4" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =4";
@@ -169,8 +193,12 @@ require_once 'view_parts/_page_base.php';
 
             }
             ?>
+            <h3>Bracelets</h3>
+        </div>
+                </a>
         </div>
     </section>
+    <img src="images/imagesweb/separation.png" alt="ligne de séparation" class="separ"/>
 </div>
 
 <?php
