@@ -76,13 +76,13 @@ ul{
 
 /**************************************************************/
 /*************************CONNECTION IN************************/
-/**************************************************************/
+/**************************NEW PRODUIT*************************/
 
 /*Masque des boites d'infos et d'administration*/
 /*APPARITION AU LOGIN*/
-#infos_admin{
-    display: none;
-}
+/*#infos_admin{*/
+    /*display: none;*/
+/*}*/
 
 #infos_admin > img{
     display: block;
@@ -109,7 +109,7 @@ ul{
 #ajout li:nth-of-type(2){ /*Rappel des categories*/
     width: 150px;
     height: 150px;
-    background-color: #6e6960;
+    background-color: #c4bdb7;
     color: white;
     display: inline-block;
     vertical-align: top;
@@ -146,4 +146,39 @@ ul{
     background-color: #41676e;
     border: 1px solid #c4bdb7;
     color: white;
+}
+
+
+
+
+/**************************************************************/
+/*************************CONNECTION IN************************/
+/************************LISTE CONTACTS************************/
+#infos_admin > section:nth-of-type(2){
+    width: 60%;
+    margin: 0 auto 60px auto;
+}
+
+table{
+    width: 100%;
+    border: 1px solid #c4bdb7;
+    border-collapse: collapse;
+}
+
+tr, th, td{
+    border: 1px solid #c4bdb7;
+    padding: 3px 6px;
+}
+
+td:nth-of-type(-n+7),
+th:nth-of-type(-n+7){
+    border-right: 1px solid white;
+}
+
+tr:nth-of-type(odd){
+    background-color: #c4bdb7;
+}
+
+tr:nth-of-type(even){
+    background-color: #e6e6e6;
 }

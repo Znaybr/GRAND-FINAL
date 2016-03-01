@@ -44,9 +44,9 @@ function product_add($nom, $description, $illustration, $categorie, $materiaux) 
         COLON_CAR . PRODUCT_TB_COL_MATERIAUX => $materiaux,
     );
     $res = $sth->execute($params);
-    //$sth->debugDumpParams();
-    //var_dump($params);
-    //var_dump($res);
+    $sth->debugDumpParams();
+    var_dump($params);
+    var_dump($res);
     if ( ! $res || ($sth->rowCount()  == 0)) {
         throw new Exception("Echec lors de la tentative d'ajout du produit $nom : (" . $sth->errorInfo()[0] . ")<br/>");
     }

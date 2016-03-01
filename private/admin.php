@@ -3,51 +3,60 @@
 $in_post=array_key_exists("addnew", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
 
+var_dump($_POST);
+
 $nom_ok = false;
+$nom = null;
 $warning_nom = ""; //message de feedback en cas de champ erronné
 if (array_key_exists("nom", $_POST)) {
     $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $nom_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
+    $nom_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$nom_ok){ // si prenom est non valide
         $warning_nom=" *";
     }
 }
 
 $categorie_ok = false;
+$categorie = null;
 $warning_categorie = ""; //message de feedback en cas de champ erronné
-if (array_key_exists("nom", $_POST)) {
-    $categorie = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $categorie_ok = (1 === preg_match("/^[1-4]{1}$/", $categorie));  // 1 siginifie que la condition est vraie et vérifiée
+if (array_key_exists("categorie", $_POST)) {
+    $categorie = filter_input(INPUT_POST, "categorie", FILTER_SANITIZE_STRING );
+    $categorie_ok = (1 === preg_match("/^[1-4]$/", $categorie));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$categorie_ok){ // si categorie est non valide
         $warning_categorie=" *";
     }
 }
 
 $description_ok = false;
+$description = null;
 $warning_description = ""; //message de feedback en cas de champ erronné
-if (array_key_exists("nom", $_POST)) {
-    $description = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $description_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $description));  // 1 siginifie que la condition est vraie et vérifiée
+if (array_key_exists("description", $_POST)) {
+    $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING );
+    $description_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $description));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$description_ok){ // si prenom est non valide
         $warning_description=" *";
     }
 }
 
 $materiaux_ok = false;
+$materiaux = null;
 $warning_materiaux = ""; //message de feedback en cas de champ erronné
-if (array_key_exists("nom", $_POST)) {
-    $materiaux = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $materiaux_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $materiaux));  // 1 siginifie que la condition est vraie et vérifiée
+if (array_key_exists("materiaux", $_POST)) {
+    $materiaux = filter_input(INPUT_POST, "materiaux", FILTER_SANITIZE_STRING );
+    $materiaux_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $materiaux));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$materiaux_ok){ // si prenom est non valide
         $warning_materiaux=" *";
     }
 }
 
+/*Gérer le file upload*/
+$illustration_ok = true;
+$illustration = 'bague.jpg';
+
 if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
     //on enregistre les données sur la BD et redirection sur page index
-
     require_once "../db/P62_DBkitDem_product.php";
-    $produit_info = product_add($nom, $categorie, $description, $materiaux);
+    $produit_info = product_add($nom, $description, $illustration, $categorie, $materiaux);
     header("Location: index.php");
     exit;
 }
@@ -95,7 +104,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
             <form name="ajout" id="ajout" method="post">
                 <ul>
                     <li>
-                        <input type="file" accept=".jpg, .png">
+                        <input type="file" accept=".jpg, .png"/>
                     </li>
                     <li>
                         <ul>1 = bague</ul>
@@ -110,25 +119,25 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
                         <label for="nom">Nom <span><?php echo $warning_nom ?></span></label>
                         <input type="text" id="nom" name="nom"
                                class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
+                               value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: 'test'?>"/>
 
                     <!--CATEGORIE-->
                         <label for="categorie">Catégorie <span><?php echo $warning_nom ?></span></label>
                         <input type="text" id="categorie" name="categorie"
                                class="<?php echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?>"/>
+                               value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: '2'?>"/>
 
                     <!--DESCRIPTION-->
-                        <label for="description">Description</label>
+                        <label for="description">Description <span><?php echo $warning_nom ?></label>
                         <input type="text" id="description" name="description"
                                class="<?php echo $in_post && ! $description_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: ''?>"/>
+                               value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: 'test'?>"/>
 
                     <!--MATERIAUX-->
-                        <label for="materiaux">Matériaux</label>
+                        <label for="materiaux">Matériaux <span><?php echo $warning_nom ?></label>
                         <input type="text" id="materiaux" name="materiaux"
                                class="<?php echo $in_post && ! $materiaux_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: ''?>"/>
+                               value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: 'test'?>"/>
 
                         <input type="submit" id="addnew" name="addnew">
 
@@ -143,6 +152,39 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
         <!--LISTE DES CONTACTS-->
         <section>
             <h2>Liste de contacts</h2>
+            <table>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Courriel</th>
+                    <th>Téléphone</th>
+                    <th>Ville</th>
+                    <th>Sexe</th>
+                    <th>Préférence</th>
+                    <th>Message</th>
+                </tr>
+                <tr>
+                    <td>Prénom</td>
+                    <td>Nom</td>
+                    <td>Courriel</td>
+                    <td>Téléphone</td>
+                    <td>Ville</td>
+                    <td>Sexe</td>
+                    <td>Préférence</td>
+                    <td>Message</td>
+                </tr>
+                <tr>
+                    <td>Prénom</td>
+                    <td>Nom</td>
+                    <td>Courriel</td>
+                    <td>Téléphone</td>
+                    <td>Ville</td>
+                    <td>Sexe</td>
+                    <td>Préférence</td>
+                    <td>Message</td>
+                </tr>
+            </table>
+
         </section>
 </div>
 
@@ -152,15 +194,15 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
 <script src="../js/main.js"></script>
 
 <!--FONCTION LOGIN/LOGOUT ADMIN-->
-    <?php
-    if (isset($_POST["password"])){
-        if ($_POST["password"] = "egypte2015"){
-            echo "<script>
-                $(infos_admin).show();
-            </script>";
-        }
-    }
-    ?>
+<!--    --><?php
+//    if (isset($_POST["password"])){
+//        if ($_POST["password"] = "egypte2015"){
+//            echo "<script>
+//                $(infos_admin).show();
+//            </script>";
+//        }
+//    }
+//    ?>
 
 </body>
 </html>
