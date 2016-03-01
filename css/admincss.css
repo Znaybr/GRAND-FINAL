@@ -84,6 +84,8 @@ ul{
     /*display: none;*/
 /*}*/
 
+
+
 #infos_admin > img{
     display: block;
     width: 200px;
@@ -93,6 +95,10 @@ ul{
 #infos_admin > section{
     width: 40%;
     margin: 0 auto 60px auto;
+}
+
+#infos_admin span{
+    color: #8bd3e0;
 }
 
 #infos_admin li:nth-of-type(1){
@@ -125,9 +131,9 @@ ul{
 
 #ajout li:nth-of-type(3) label{
     display: inline-block;
-    width: 18%;
+    width: 20%;
     text-align: left;
-    margin-left: 40px;
+    margin-left: 32px;
     box-sizing: border-box;
 }
 
@@ -146,6 +152,12 @@ ul{
     background-color: #41676e;
     border: 1px solid #c4bdb7;
     color: white;
+}
+
+#ajout > p{
+    margin-top: 15px;
+    color: #41676e;
+    text-align: center;
 }
 
 

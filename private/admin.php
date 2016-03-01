@@ -3,7 +3,7 @@
 $in_post=array_key_exists("addnew", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
 
-var_dump($_POST);
+//var_dump($_POST);
 
 $nom_ok = false;
 $nom = null;
@@ -49,11 +49,52 @@ if (array_key_exists("materiaux", $_POST)) {
     }
 }
 
-/*Gérer le file upload*/
-$illustration_ok = true;
-$illustration = 'bague.jpg';
+///*Gérer le file upload*/
+//$illustration_ok = true;
+//$illustration = '';
+//
+//if (array_key_exists('image_files', $_FILES)) {
+////    var_dump($_FILES);
+//} else {
+//    exit;
+//};
 
-if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
+$target_dir = "../images/uploaded_files/";
+$target_file = $target_dir . basename($_FILES["image_files"]["name"]);
+$illustration = $_FILES["image_files"]["name"];
+
+$upload_valid = true; // Indique si le processus de upload est correcte
+$error_msg = ''; // Message d'erreur le cas échéant
+
+// Vérification des fichiers uploadés : Sont-ce des images valides ?
+if (isset($_POST["addnew"])) {
+    $check = getimagesize($_FILES["image_files"]["tmp_name"]);
+    $upload_valid = ($check !== false);
+    if ( ! $upload_valid) {
+        $error_msg = 'Le fichier téléversé n\'est une images valide.';
+    }
+    //echo 'Le fichier téléversé est une images valide (' . $check["mime"] . ').';
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    $error_msg .= '<br>Le fichier existe déjà.';
+    $upload_valid = false;
+}
+
+// Allow certain file formats
+$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+    $error_msg .= '<br>Le format de fichier est invalide : (JPG, JPEG, PNG & GIF uniquement).';
+    $upload_valid = false;
+}
+
+// Transfert du fichier
+if ( ! move_uploaded_file($_FILES["image_files"]["tmp_name"], $target_file)) {
+    $upload_valid = false;
+}
+
+if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_ok){
     //on enregistre les données sur la BD et redirection sur page index
     require_once "../db/P62_DBkitDem_product.php";
     $produit_info = product_add($nom, $description, $illustration, $categorie, $materiaux);
@@ -104,7 +145,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
             <form name="ajout" id="ajout" method="post">
                 <ul>
                     <li>
-                        <input type="file" accept=".jpg, .png"/>
+                        <input type="file" name="image_files" id="image_files" accept="image/*"
                     </li>
                     <li>
                         <ul>1 = bague</ul>
@@ -119,25 +160,25 @@ if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
                         <label for="nom">Nom <span><?php echo $warning_nom ?></span></label>
                         <input type="text" id="nom" name="nom"
                                class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: 'test'?>"/>
+                               value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
 
                     <!--CATEGORIE-->
-                        <label for="categorie">Catégorie <span><?php echo $warning_nom ?></span></label>
+                        <label for="categorie">Catégorie <span><?php echo $warning_categorie ?></span></label>
                         <input type="text" id="categorie" name="categorie"
                                class="<?php echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: '2'?>"/>
+                               value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?>"/>
 
                     <!--DESCRIPTION-->
-                        <label for="description">Description <span><?php echo $warning_nom ?></label>
+                        <label for="description">Description <span><?php echo $warning_description ?></label>
                         <input type="text" id="description" name="description"
                                class="<?php echo $in_post && ! $description_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: 'test'?>"/>
+                               value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: ''?>"/>
 
                     <!--MATERIAUX-->
-                        <label for="materiaux">Matériaux <span><?php echo $warning_nom ?></label>
+                        <label for="materiaux">Matériaux <span><?php echo $warning_materiaux ?></label>
                         <input type="text" id="materiaux" name="materiaux"
                                class="<?php echo $in_post && ! $materiaux_ok ? 'erreur' : ''; ?>"
-                               value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: 'test'?>"/>
+                               value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: ''?>"/>
 
                         <input type="submit" id="addnew" name="addnew">
 
