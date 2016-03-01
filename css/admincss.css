@@ -54,10 +54,12 @@ ul{
 
 #admin input:nth-of-type(1){ /*CHAMP PASSWORD*/
     display: block;
+    padding: 4px;
     margin: 15px auto 0 auto;
     width: 150px;
     border: 1px solid #c4bdb7;
     box-shadow: 0 0 1px #c4bdb7 inset;
+    text-align: center;
 }
 
 #admin input[type="submit"]{ /*BTN_SUBMIT*/
@@ -77,19 +79,20 @@ ul{
 /**************************************************************/
 
 /*Masque des boites d'infos et d'administration*/
+/*APPARITION AU LOGIN*/
 #infos_admin{
     display: none;
 }
 
 #infos_admin > img{
-display: block;
-width: 200px;
-margin: 20px auto;
+    display: block;
+    width: 200px;
+    margin: 20px auto;
 }
 
 #infos_admin > section{
     width: 40%;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
 }
 
 #infos_admin li:nth-of-type(1){
@@ -103,28 +106,44 @@ margin: 20px auto;
     font-family: 'Roboto', sans-serif;
 }
 
-#ajout li:nth-of-type(2) label{
+#ajout li:nth-of-type(2){ /*Rappel des categories*/
+    width: 150px;
+    height: 150px;
+    background-color: #6e6960;
+    color: white;
     display: inline-block;
-    width: 20%;
-    text-align: left;
+    vertical-align: top;
+    text-align: center;
+    padding-top: 37px;
     box-sizing: border-box;
 }
 
-#ajout li:nth-of-type(2) input{
-    padding: 4px;
-    margin: 2px;
+#ajout li:nth-of-type(3){
     display: inline-block;
     width: 75%;
+}
+
+#ajout li:nth-of-type(3) label{
+    display: inline-block;
+    width: 18%;
+    text-align: left;
+    margin-left: 40px;
     box-sizing: border-box;
 }
 
-#ajout input[type="submit"]{ /*BTN_SUBMIT*/
-    display: block;
-    margin: 5px auto 60px auto;
+#ajout li:nth-of-type(3) input{
     padding: 4px;
-    width: 40%;
+    margin: 1px 0;
+    display: inline-block;
+    width: 71%;
+    box-sizing: border-box;
+}
+
+#ajout li:nth-of-type(3) input[type="submit"]{ /*BTN_SUBMIT*/
+    margin: 6px auto 0 40px;
+    padding: 4px;
+    width: 90%;
     background-color: #41676e;
     border: 1px solid #c4bdb7;
     color: white;
 }
-

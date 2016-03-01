@@ -1,3 +1,59 @@
+<?php
+
+$in_post=array_key_exists("addnew", $_POST); // Savoir si le formulaire est en soumission/reception
+//$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
+
+$nom_ok = false;
+$warning_nom = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("nom", $_POST)) {
+    $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
+    $nom_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$nom_ok){ // si prenom est non valide
+        $warning_nom=" *";
+    }
+}
+
+$categorie_ok = false;
+$warning_categorie = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("nom", $_POST)) {
+    $categorie = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
+    $categorie_ok = (1 === preg_match("/^[1-4]{1}$/", $categorie));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$categorie_ok){ // si categorie est non valide
+        $warning_categorie=" *";
+    }
+}
+
+$description_ok = false;
+$warning_description = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("nom", $_POST)) {
+    $description = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
+    $description_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $description));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$description_ok){ // si prenom est non valide
+        $warning_description=" *";
+    }
+}
+
+$materiaux_ok = false;
+$warning_materiaux = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("nom", $_POST)) {
+    $materiaux = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
+    $materiaux_ok = (1 === preg_match("/^[A-Zaz0-9]{4,}$/", $materiaux));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$materiaux_ok){ // si prenom est non valide
+        $warning_materiaux=" *";
+    }
+}
+
+if ($nom_ok && $categorie_ok && $description_ok && $materiaux_ok){
+    //on enregistre les données sur la BD et redirection sur page index
+
+    require_once "../db/P62_DBkitDem_product.php";
+    $produit_info = product_add($nom, $categorie, $description, $materiaux);
+    header("Location: index.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -42,17 +98,43 @@
                         <input type="file" accept=".jpg, .png">
                     </li>
                     <li>
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom">
-                        <label for="categorie">Catégorie</label>
-                        <input type="text" id="categorie" name="categorie">
-                        <label for="description">Description</label>
-                        <input type="text" id="description" name="description">
+                        <ul>1 = bague</ul>
+                        <ul>2 = collier</ul>
+                        <ul>3 = boucle</ul>
+                        <ul>4 = bracelet</ul>
                     </li>
+
                     <li>
+
+                    <!--NOM-->
+                        <label for="nom">Nom <span><?php echo $warning_nom ?></span></label>
+                        <input type="text" id="nom" name="nom"
+                               class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
+
+                    <!--CATEGORIE-->
+                        <label for="categorie">Catégorie <span><?php echo $warning_nom ?></span></label>
+                        <input type="text" id="categorie" name="categorie"
+                               class="<?php echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?>"/>
+
+                    <!--DESCRIPTION-->
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description"
+                               class="<?php echo $in_post && ! $description_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: ''?>"/>
+
+                    <!--MATERIAUX-->
+                        <label for="materiaux">Matériaux</label>
+                        <input type="text" id="materiaux" name="materiaux"
+                               class="<?php echo $in_post && ! $materiaux_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: ''?>"/>
+
                         <input type="submit" id="addnew" name="addnew">
+
                     </li>
                 </ul>
+                <?php if($in_post){ echo "<p>N'oublies pas de remplir les champs avec un *.</p>"; } ?>
             </form>
         </section>
 
