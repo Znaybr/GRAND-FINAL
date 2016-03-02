@@ -14,34 +14,43 @@ require_once('P62_DBkitDem_common.php');
  * Liste des colonnes de la table product
  */
 define('PRODUCT_TB_COL_ID', 'id');
+define('PRODUCT_TB_COL_PRENOM', 'prenom');
 define('PRODUCT_TB_COL_NOM', 'nom');
-define('PRODUCT_TB_COL_COURRIEL', 'description');
-define('PRODUCT_TB_COL_TELEPHONE', 'illustration');
-define('PRODUCT_TB_COL_VILLE', 'categorie');
-define('PRODUCT_TB_COL_SEXE', 'materiaux');
+define('PRODUCT_TB_COL_COURRIEL', 'courriel');
+define('PRODUCT_TB_COL_TELEPHONE', 'telephone');
+define('PRODUCT_TB_COL_VILLE', 'ville');
+define('PRODUCT_TB_COL_SEXE', 'sexe');
+define('PRODUCT_TB_COL_PREFERENCE', 'preference');
+define('PRODUCT_TB_COL_MESSAGE', 'message');
 $product_tb_cols = array(
     PRODUCT_TB_COL_ID,
+    PRODUCT_TB_COL_PRENOM,
     PRODUCT_TB_COL_NOM,
     PRODUCT_TB_COL_COURRIEL,
     PRODUCT_TB_COL_TELEPHONE,
     PRODUCT_TB_COL_VILLE,
     PRODUCT_TB_COL_SEXE,
+    PRODUCT_TB_COL_PREFERENCE,
+    PRODUCT_TB_COL_MESSAGE,
 );
 
 /**
  *  Insertion (ajout) d'un nouveau produit
  */
-function product_add($nom, $description, $illustration, $categorie, $materiaux) {
+function message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message) {
     global $pdo, $product_tb_cols;
     $resultat = false; // Mode défensif
     $queryStr = 'INSERT INTO ' . P62_DBKITDEM_TB_PRODUCT . '(' . get_tb_cols($product_tb_cols) . ') VALUES (' . get_tb_cols($product_tb_cols, COLON_CAR) . ')';
     $sth = $pdo->prepare($queryStr);
     $params = array(
+        COLON_CAR . PRODUCT_TB_COL_PRENOM => $prenom,
         COLON_CAR . PRODUCT_TB_COL_NOM => $nom,
-        COLON_CAR . PRODUCT_TB_COL_COURRIEL => $description,
-        COLON_CAR . PRODUCT_TB_COL_TELEPHONE => $illustration,
-        COLON_CAR . PRODUCT_TB_COL_VILLE => $categorie,
-        COLON_CAR . PRODUCT_TB_COL_SEXE => $materiaux,
+        COLON_CAR . PRODUCT_TB_COL_COURRIEL => $courriel,
+        COLON_CAR . PRODUCT_TB_COL_TELEPHONE => $telephone,
+        COLON_CAR . PRODUCT_TB_COL_VILLE => $ville,
+        COLON_CAR . PRODUCT_TB_COL_SEXE => $sexe,
+        COLON_CAR . PRODUCT_TB_COL_PREFERENCE => $preference,
+        COLON_CAR . PRODUCT_TB_COL_MESSAGE => $message,
     );
     $res = $sth->execute($params);
     $sth->debugDumpParams();

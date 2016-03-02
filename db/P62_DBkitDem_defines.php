@@ -8,6 +8,7 @@ define('P62_DBKITDEM_TB_USER', 'user');
 define('P62_DBKITDEM_TB_USERCNX', 'user_cnx');
 define('P62_DBKITDEM_TB_PRODUCT', 'produits');
 define('P62_DBKITDEM_TB_PRODUCT_CATEGORY', 'categories');
+define('P62_DBKITDEM_TB_MESSAGES', 'messages');
 define('COLON_CAR', ':');
 define('ACCENT_GRAVE_CAR', '`');
 //define('LIKE_OP', 'LIKE');
