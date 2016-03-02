@@ -4,14 +4,12 @@ $in_post=array_key_exists("register", $_POST); // Savoir si le formulaire est en
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
 
 $prenom_ok = false;
-$warning_prenom = ""; //message de feedback en cas de champ erronné
 $prenom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("prenom", $_POST)) {
     $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_STRING );
     $prenom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $prenom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$prenom_ok){ // si prenom est non valide
-        $warning_prenom=" !";
-        $prenom_message="Votre prénom doit comporter au moins deux lettres";
+        $prenom_message="Votre prénom doit être inscrit au complet lettres";
     }
     /*    var_dump($prenom);
         var_dump($prenom_ok);
@@ -19,96 +17,70 @@ if (array_key_exists("prenom", $_POST)) {
 }
 
 $nom_ok = false;
-$warning_nom = ""; //message de feedback en cas de champ erronné
 $nom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("nom", $_POST)) {
     $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
     $nom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$nom_ok){ // si nom est non valide
-        $warning_nom=" !";
-        $nom_message="Votre nom doit comporter au moins deux lettres";
+        $nom_message="Votre nom doit être inscrit au complet lettres";
     }
     /*    var_dump($nom);
         var_dump($nom_ok);*/
 }
 
-//$genre_ok = array_key_exists("genre", $_POST);
-//$warning_genre = ""; //message de feedback en cas de champ erronné
-//$genre_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
-//    if(!$genre_ok) { // si nom est non valide
-//        $warning_genre = " !";
-//        $genre_message = "Merci de préciser ce champs";
-//    }
-/*    var_dump($nom);
-    var_dump($nom_ok);*/
-
 $courriel_ok = false;
-$warning_courriel = ""; //message de feedback en cas de champ erronné
 $courriel_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("courriel", $_POST)) {
     $courriel = filter_input(INPUT_POST, "courriel", FILTER_SANITIZE_EMAIL );
     $courriel = filter_var($courriel, FILTER_VALIDATE_EMAIL);
     $courriel_ok = (false !== $courriel);
     if(!$courriel_ok) { // si nom est non valide
-        $warning_courriel=" !";
         $courriel_message="Ce champs doit comporter une adresse mail valide";
     }
-    // PAS DE PREGMATCH puisque les filtres font déjà la selection
     /*    var_dump($courriel);
         var_dump($courriel_ok);*/
 }
 
-$pseudo_ok = false;
-$pseudo_message="";
-$warning_pseudo = ""; //message de feedback en cas de champ erronné
-
-if (array_key_exists("pseudo", $_POST)) {
-    $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING );
-    $pseudo_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $pseudo));  // 1 siginifie que la condition est vraie et vérifiée
-    if(!$pseudo_ok){ // si nom est non valide
-        $warning_pseudo=" !";
-        $pseudo_message="Votre pseudo doit comporter au moins quatres lettres";
-    } else {
-        // Est ce que le pseudo est disponible
-        require_once "db/_user.php";
-        $pseudo_ok = !username_exists($pseudo);
-        if (username_exists($pseudo)){
-            echo "Le pseudo" . $pseudo . "est déjà utilisé";
-        };
+$telephone_ok = false;
+$telephone_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
+if (array_key_exists("telephone", $_POST)) {
+    $telephone = filter_input(INPUT_POST, "telephone", FILTER_SANITIZE_STRING );
+    $telephone_ok = (1 === preg_match('/^\(?\d{3}\)?[-\.\s]?\d{3}[-\.\s]?\d{4}$/', $telephone));  // 1 siginifie que la condition est vraie et vérifiée
+    $telephone_ok = (false !== $telephone);
+    if(!$telephone_ok) { // si nom est non valide
+        $telephone_message="Ce champs doit comporter un numéro de téléphone valide";
     }
-    /*    var_dump($pseudo);
-        var_dump($pseudo_ok);*/
+    /*    var_dump($telephone);
+        var_dump($telephone_ok);*/
 }
 
-$mdp_ok = false;
-$mdp_message="";
-$warning_mdp = ""; //message de feedback en cas de champ erronné
-if (array_key_exists("mdp", $_POST)) {
-    $mdp = filter_input(INPUT_POST, "mdp", FILTER_SANITIZE_STRING );
-    $mdp_ok = (1 === preg_match("/^[A-Za-z0-9%&!*?]{8,}$/", $mdp));  // 1 siginifie que la condition est vraie et vérifiée
-    if(!$mdp_ok){ // si nom est non valide
-        $warning_mdp=" !";
-        $mdp_message="Votre mot de passe doit comporter au moins 8 caractères";
+$message_ok = false;
+$message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
+if (array_key_exists("message", $_POST)) {
+    $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING );
+    $message_ok = (1 === preg_match("/^[A-Za-z0-9]{20,}$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$message_ok){ // si nom est non valide
+        $message_message="Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
     }
-    /*    var_dump($mdp);
-        var_dump($mdp_ok);*/
+    /*    var_dump($message);
+        var_dump($message_ok);*/
 }
 
-if ($nom_ok && $prenom_ok && $courriel_ok && $pseudo_ok && $mdp_ok /*&& $genre_ok*/){
-    require_once "db/_user.php";
-    $user_info = user_add($pseudo, $mdp, $nom, $prenom, /*$genre,*/ $courriel);
+if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
+    //on enregistre les données et s'en va sur une autres page
+    require_once "../db/P62_DBkitDem_messages.php";
+    $message_info = message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message);
     header("Location: index.php");
     exit;
-    //on enregistre les données et s'en va sur une autres page
 }
 
 
 ?>
 
-<form id="inscription" action="inscription.php" method="post">
+<form id="inscription" action="index.php" method="post">
     <ul>
         <!--        PRENOM-->
-        <li><label for="prenom">Prénom <span><?php echo $warning_prenom ?></span></label>
+        <li><label for="prenom">Prénom <span>*</span></label>
             <input type="text" id="prenom" name="prenom"
                    class="<?php echo $in_post && ! $prenom_ok ? 'erreur' : ''; ?>"
                    value="<?php echo array_key_exists('prenom', $_POST) ? $_POST['prenom']: ''?>"/>
@@ -118,7 +90,7 @@ if ($nom_ok && $prenom_ok && $courriel_ok && $pseudo_ok && $mdp_ok /*&& $genre_o
         }  ?>
 
         <!--        NOM-->
-        <li><label for="nom">Nom <span><?php echo $warning_nom ?></span></label>
+        <li><label for="nom">Nom <span>*</span></label>
             <input type="text" id="nom" name="nom"
                    class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
                    value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
@@ -127,24 +99,8 @@ if ($nom_ok && $prenom_ok && $courriel_ok && $pseudo_ok && $mdp_ok /*&& $genre_o
             echo "<p>$nom_message</p>";
         }  ?>
 
-        <!--        SEXE-->
-        <li id="sexe">
-            <label>Sexe : </label>
-            <div id="genre">
-                <label id="h" for="genre_homme">H</label>
-                <input type="radio" id="genre_homme" name="genre" value="genre_homme"
-                    <?php echo (array_key_exists('genre', $_POST) && ($_POST['genre'] == "genre_homme")) ? 'checked="checked"' : ''?>/>
-                <label id="f" for="genre_femme">F</label>
-                <input type="radio" id="genre_femme" name="genre" value="genre_femme"
-                    <?php echo (array_key_exists('genre', $_POST) && ($_POST['genre'] == "genre_femme")) ? 'checked="checked"' : ''?>/>
-            </div>
-        </li>
-        <?php if ($in_post && ! $genre_ok){
-            echo "<p>$genre_message</p>";
-        }  ?>
-
         <!--        COURRIEL-->
-        <li><label for="courriel">Courriel <span><?php echo $warning_courriel ?></span></label>
+        <li><label for="courriel">Courriel <span>*</span></label>
             <input type="text" id="courriel" name="courriel"
                    class="<?php echo $in_post && ! $courriel_ok ? 'erreur' : ''; ?>"
                    value="<?php echo array_key_exists('courriel', $_POST) ? $_POST['courriel']: ''?>"/>
@@ -153,25 +109,48 @@ if ($nom_ok && $prenom_ok && $courriel_ok && $pseudo_ok && $mdp_ok /*&& $genre_o
             echo "<p>$courriel_message</p>";
         }  ?>
 
-        <!--        PSEUDO-->
-        <li><label for="pseudo">Pseudo <span><?php echo $warning_pseudo ?></span></label>
-            <input type="text" id="pseudo" name="pseudo"
-                   class="<?php echo $in_post && ! $pseudo_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('pseudo', $_POST) ? $_POST['pseudo']: ''?>"/>
+        <!--        TELEPHONE-->
+        <li><label for="telephone">Téléphone <span>*</span></label>
+            <input type="text" id="telephone" name="telephone"
+                   class="<?php echo $in_post && ! $telephone_ok ? 'erreur' : ''; ?>"
+                   value="<?php echo array_key_exists('telephone', $_POST) ? $_POST['telephone']: ''?>"/>
         </li>
-        <?php if ($in_post && ! $pseudo_ok){
-            echo "<p>$pseudo_message</p>";
+        <?php if ($in_post && ! $telephone_ok){
+            echo "<p>$telephone_message</p>";
         }  ?>
 
-        <!--        MOT DE PASSE-->
-        <li><label for="mdp">Mot de passe<span><?php echo $warning_mdp ?></span></label>
-            <input type="password" id="mdp" name="mdp"
-                   class="<?php echo $in_post && ! $mdp_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('mdp', $_POST) ? $_POST['mdp']: ''?>"/>
+        <!--        VILLE-->
+        <li><label for="ville">Ville <span>*</span></label>
+            <input type="text" id="ville" name="ville"
         </li>
-        <?php if ($in_post && ! $mdp_ok){
-            echo "<p>$mdp_message</p>";
-        }  ?>
+
+        <!--        SEXE-->
+        <li><label>Sexe : </label>
+            <div id="genre">
+                <label id="h" for="genre_homme">Homme</label>
+                <input type="radio" id="genre_homme" name="genre" value="genre_homme"/>
+                <label id="f" for="genre_femme">Femme</label>
+                <input type="radio" id="genre_femme" name="genre" value="genre_femme"/>
+            </div>
+        </li>
+
+        <!--        PREFERENCE-->
+        <li>
+            <label for="pref">Préférence</label>
+            <input list="pref" type="text" id="pref" name="pref"/>
+                <datalist id="pref">
+                    <option>Bagues</option>
+                    <option>Colliers</option>
+                    <option>Boucles d'oreilles</option>
+                    <option>Bracelets</option>
+                </datalist>
+        </li>
+
+        <!--        MESSAGE-->
+        <li>
+            <label for="text_message">Message</label>
+            <textarea rows="" cols="" id="text_message" name="text_message"></textarea>
+        </li>
 
         <li><input type="submit" value="Valider" id="register" name="register"></li>
     </ul>
