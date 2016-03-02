@@ -49,50 +49,10 @@ if (array_key_exists("materiaux", $_POST)) {
     }
 }
 
-///*Gérer le file upload*/
-//$illustration_ok = true;
-//$illustration = '';
-//
-//if (array_key_exists('image_files', $_FILES)) {
-////    var_dump($_FILES);
-//} else {
-//    exit;
-//};
+/***********************************Gérer le file upload***********************************/
+$illustration_ok = true;
+$illustration = '';
 
-$target_dir = "../images/uploaded_files/";
-$target_file = $target_dir . basename($_FILES["image_files"]["name"]);
-$illustration = $_FILES["image_files"]["name"];
-
-$upload_valid = true; // Indique si le processus de upload est correcte
-$error_msg = ''; // Message d'erreur le cas échéant
-
-// Vérification des fichiers uploadés : Sont-ce des images valides ?
-if (isset($_POST["addnew"])) {
-    $check = getimagesize($_FILES["image_files"]["tmp_name"]);
-    $upload_valid = ($check !== false);
-    if ( ! $upload_valid) {
-        $error_msg = 'Le fichier téléversé n\'est une images valide.';
-    }
-    //echo 'Le fichier téléversé est une images valide (' . $check["mime"] . ').';
-}
-
-// Check if file already exists
-if (file_exists($target_file)) {
-    $error_msg .= '<br>Le fichier existe déjà.';
-    $upload_valid = false;
-}
-
-// Allow certain file formats
-$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-    $error_msg .= '<br>Le format de fichier est invalide : (JPG, JPEG, PNG & GIF uniquement).';
-    $upload_valid = false;
-}
-
-// Transfert du fichier
-if ( ! move_uploaded_file($_FILES["image_files"]["tmp_name"], $target_file)) {
-    $upload_valid = false;
-}
 
 if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_ok){
     //on enregistre les données sur la BD et redirection sur page index
@@ -142,7 +102,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
         <!--CREATION/AJOUT PRODUIT-->
         <section>
             <h2>Ajout d'une création</h2>
-            <form name="ajout" id="ajout" method="post">
+            <form name="ajout" id="ajout" method="post" action="_upload.php">
                 <ul>
                     <li>
                         <input type="file" name="image_files" id="image_files" accept="image/*"
