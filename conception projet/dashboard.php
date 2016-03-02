@@ -52,7 +52,7 @@ require_once(dirname(__FILE__) . '/db/turntablelist_product.php');
     }
     ?>
 
-</div>
+    </div>
 
 <?php
 require_once "view_parts/_page_bottom.php"; // référence au fichier de référence page_base = HEAD en HTML

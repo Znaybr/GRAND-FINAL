@@ -7,10 +7,12 @@ require_once 'data/_main_data.php';
 $site_data[PAGE_ID] = 'index';
 require_once 'view_parts/_page_base.php';
 ?>
+<h1>Les plus belles créations d'Élise</h1>
 <div id="product">
+
     <div id="productclas">
         <div id="cat1">
-            <a href="?category_id=1">
+            <a href="?categorie=1">
                 <div id="cercle1" class="cercle2">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =1";
@@ -42,7 +44,7 @@ require_once 'view_parts/_page_base.php';
         </div>
 
         <div id="cat2">
-            <a href="?category_id=2">
+            <a href="?categorie=2">
                 <div id="cercle2" class="cercle2">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =2";
@@ -93,7 +95,7 @@ require_once 'view_parts/_page_base.php';
             </a>
         </div>
         <div id="cat3">
-            <a href="?category_id=3">
+            <a href="?categorie=3">
                 <div id="cercle3" class="cercle2">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =3";
@@ -126,7 +128,7 @@ require_once 'view_parts/_page_base.php';
             </a>
         </div>
         <div id="cat4">
-            <a href="?category_id=4">
+            <a href="?categorie=4">
                 <div id="cercle4" class="cercle2">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =4";
@@ -161,11 +163,10 @@ require_once 'view_parts/_page_base.php';
     </div>
     <img src="images/imagesweb/separation.png" alt="ligne de séparation" class="separ"/>
     <div id="productdetail">
-        <h1>Les plus belles créations</h1>
         <?php
         $query = "SELECT * FROM produits ";
-        if(array_key_exists("category_id",$_GET)){
-            $query .=" WHERE category_id=".$_GET["category_id"];
+        if(array_key_exists("categorie",$_GET)){
+            $query .=" WHERE categorie=".$_GET["categorie"];
         }
 
         $results = $pdo->prepare($query);
@@ -173,12 +174,24 @@ require_once 'view_parts/_page_base.php';
 
         while ($row = $results->fetch(PDO::FETCH_ASSOC)){
             echo
-                "<div id= 'categorie' >" .
+                "<div id= 'once' >" .
 
-                "<p>Group Name: ".$row["group_name"]."</p>".
-                "<p><a href='_pages_produits.php'><img src='image/" .$row['image']."'></a></p>".
-                "<p>Price:&pound".$row["price"]."</p>".
-                "<p>Album:".$row["album_title"]."</p>".
+                "<style>"
+                . "#once{
+                    background-image:url("
+                ." '" ."images". "/".$row['illustration']." ');
+                    background-position:center;
+                    background-size:cover;
+                    background-repeat:no-repeat;
+                    ".
+                "}"
+                ."</style>".
+
+
+                "<h3>".$row["nom"]."</h3>".
+
+                "<figcaption>".$row["description"]."</figcaption>".
+                "<p>".$row["materiaux"]."</p>".
 
                 "</div>";
         }

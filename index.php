@@ -49,7 +49,7 @@ require_once 'view_parts/_page_base.php';
     <section id="categorie">
 
         <div id="cat1">
-            <a href="?category_id=1">
+            <a href="?categorie=1">
         <div id="cercle1" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =1";
@@ -81,7 +81,7 @@ require_once 'view_parts/_page_base.php';
         </div>
 
         <div id="cat2">
-            <a href="?category_id=2">
+            <a href="?categorie=2">
         <div id="cercle2" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =2";
@@ -92,19 +92,6 @@ require_once 'view_parts/_page_base.php';
 
             while ($row = $results->fetch(PDO::FETCH_ASSOC))
             {
-                //ajouter valleur dans un tableau .push?
-                //array.push($row['illustration'])
-                //random avec comme limite array.lenght == nbrRandom
-                //`fin while
-
-                //echo
-//                "<style>"
-//                . "#cercle2{
-//                    background-image:url("
-//                ." '" ."images". "/".$array`[random]." ');
-//                    background-size: cover;".
-//                "}"
-////                ."</style>";
 
 
                 $row["id"];
@@ -132,7 +119,7 @@ require_once 'view_parts/_page_base.php';
                 </a>
         </div>
         <div id="cat3">
-            <a href="?category_id=3">
+            <a href="?categorie=3">
         <div id="cercle3" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =3";
@@ -165,7 +152,7 @@ require_once 'view_parts/_page_base.php';
                 </a>
         </div>
         <div id="cat4">
-            <a href="?category_id=4">
+            <a href="?categorie=4">
         <div id="cercle4" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =4";
@@ -186,10 +173,6 @@ require_once 'view_parts/_page_base.php';
                     background-size: cover;".
                     "}"
                     ."</style>";
-
-
-
-
 
             }
             ?>

@@ -322,6 +322,12 @@ fieldset>div img {
 
 /* css page produits */
 
+h1 {
+    color: #8bd3e0;
+    margin-left: 30%;
+    font-family: 'lavanderia_regular';
+}
+
 #product {
     width: 90%;
     min-height: 800px;
@@ -351,5 +357,27 @@ fieldset>div img {
 }
 #productdetail {
     display: inline-block;
-    width: 80%;
+    width:60%;
+    position: absolute;
+    right: 10%;
+}
+#once {
+    display: inline-block;
+    width: 250px;
+    height: 350px;
+    text-align: center;
+}
+
+#once h3 {
+    font-family: 'lavanderia_regular';
+    color: #8bd3e0;
+    margin-bottom: 50px;
+}
+#once figcaption {
+    color: #41676e;
+    margin-bottom: 30px;
+}
+#once p {
+    color: #c4bdb7;
+    margin-bottom: 10px;
 }
