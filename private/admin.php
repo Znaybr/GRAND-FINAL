@@ -58,7 +58,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
     //on enregistre les données sur la BD et redirection sur page index
     require_once "../db/P62_DBkitDem_product.php";
     $produit_info = product_add($nom, $description, $illustration, $categorie, $materiaux);
-    header("Location: index.php");
+    header("Location: admin.php");
     exit;
 }
 

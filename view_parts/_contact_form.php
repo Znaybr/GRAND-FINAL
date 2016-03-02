@@ -77,82 +77,89 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
 
 ?>
 
-<form id="inscription" action="index.php" method="post">
-    <ul>
-        <!--        PRENOM-->
-        <li><label for="prenom">Prénom <span>*</span></label>
-            <input type="text" id="prenom" name="prenom"
-                   class="<?php echo $in_post && ! $prenom_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('prenom', $_POST) ? $_POST['prenom']: ''?>"/>
-        </li>
-        <?php if ($in_post && ! $prenom_ok){
-            echo "<p>$prenom_message</p>";
-        }  ?>
 
-        <!--        NOM-->
-        <li><label for="nom">Nom <span>*</span></label>
-            <input type="text" id="nom" name="nom"
-                   class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
-        </li>
-        <?php if ($in_post && ! $nom_ok){
-            echo "<p>$nom_message</p>";
-        }  ?>
+    <fieldset>
+        <legend>Contactez-nous</legend>
 
-        <!--        COURRIEL-->
-        <li><label for="courriel">Courriel <span>*</span></label>
-            <input type="text" id="courriel" name="courriel"
-                   class="<?php echo $in_post && ! $courriel_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('courriel', $_POST) ? $_POST['courriel']: ''?>"/>
-        </li>
-        <?php if ($in_post && ! $courriel_ok){
-            echo "<p>$courriel_message</p>";
-        }  ?>
+        <p>Laissez nous un message, vos questions ainsi que vos coordonnées, nous vous répondrons prochainement.</p>
 
-        <!--        TELEPHONE-->
-        <li><label for="telephone">Téléphone <span>*</span></label>
-            <input type="text" id="telephone" name="telephone"
-                   class="<?php echo $in_post && ! $telephone_ok ? 'erreur' : ''; ?>"
-                   value="<?php echo array_key_exists('telephone', $_POST) ? $_POST['telephone']: ''?>"/>
-        </li>
-        <?php if ($in_post && ! $telephone_ok){
-            echo "<p>$telephone_message</p>";
-        }  ?>
+        <form id="form_contact" action="index.php" method="post">
+            <ul>
+                <!--        PRENOM-->
+                <li><label for="prenom">Prénom <span>*</span></label>
+                    <input type="text" id="prenom" name="prenom" autofocus
+                           class="<?php echo $in_post && ! $prenom_ok ? 'erreur' : ''; ?>"
+                           value="<?php echo array_key_exists('prenom', $_POST) ? $_POST['prenom']: ''?>"/>
+                </li>
+                <?php if ($in_post && ! $prenom_ok){
+                    echo "<p>$prenom_message</p>";
+                }  ?>
 
-        <!--        VILLE-->
-        <li><label for="ville">Ville <span>*</span></label>
-            <input type="text" id="ville" name="ville"
-        </li>
+                <!--        NOM-->
+                <li><label for="nom">Nom <span>*</span></label>
+                    <input type="text" id="nom" name="nom"
+                           class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
+                           value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
+                </li>
+                <?php if ($in_post && ! $nom_ok){
+                    echo "<p>$nom_message</p>";
+                }  ?>
 
-        <!--        SEXE-->
-        <li><label>Sexe : </label>
-            <div id="genre">
-                <label id="h" for="genre_homme">Homme</label>
-                <input type="radio" id="genre_homme" name="genre" value="genre_homme"/>
-                <label id="f" for="genre_femme">Femme</label>
-                <input type="radio" id="genre_femme" name="genre" value="genre_femme"/>
-            </div>
-        </li>
+                <!--        COURRIEL-->
+                <li><label for="courriel">Courriel <span>*</span></label>
+                    <input type="text" id="courriel" name="courriel"
+                           class="<?php echo $in_post && ! $courriel_ok ? 'erreur' : ''; ?>"
+                           value="<?php echo array_key_exists('courriel', $_POST) ? $_POST['courriel']: ''?>"/>
+                </li>
+                <?php if ($in_post && ! $courriel_ok){
+                    echo "<p>$courriel_message</p>";
+                }  ?>
 
-        <!--        PREFERENCE-->
-        <li>
-            <label for="pref">Préférence</label>
-            <input list="pref" type="text" id="pref" name="pref"/>
-                <datalist id="pref">
-                    <option>Bagues</option>
-                    <option>Colliers</option>
-                    <option>Boucles d'oreilles</option>
-                    <option>Bracelets</option>
-                </datalist>
-        </li>
+                <!--        TELEPHONE-->
+                <li><label for="telephone">Téléphone <span>*</span></label>
+                    <input type="text" id="telephone" name="telephone"
+                           class="<?php echo $in_post && ! $telephone_ok ? 'erreur' : ''; ?>"
+                           value="<?php echo array_key_exists('telephone', $_POST) ? $_POST['telephone']: ''?>"/>
+                </li>
+                <?php if ($in_post && ! $telephone_ok){
+                    echo "<p>$telephone_message</p>";
+                }  ?>
 
-        <!--        MESSAGE-->
-        <li>
-            <label for="text_message">Message</label>
-            <textarea rows="" cols="" id="text_message" name="text_message"></textarea>
-        </li>
+                <!--        VILLE-->
+                <li><label for="ville">Ville</label>
+                    <input type="text" id="ville" name="ville"
+                </li>
 
-        <li><input type="submit" value="Valider" id="register" name="register"></li>
-    </ul>
-    <?php if($in_post){ echo "<p>Merci de corriger les champs comportants un *.</p>"; } ?>
-</form>
+                <!--        SEXE-->
+                <li><label>Sexe : </label>
+                    <div id="genre">
+                        <label id="f" for="genre_femme">Femme</label>
+                        <input type="radio" id="genre_femme" name="genre" value="genre_femme"/>
+                        <label id="h" for="genre_homme">Homme</label>
+                        <input type="radio" id="genre_homme" name="genre" value="genre_homme"/>
+                    </div>
+                </li>
+
+                <!--        PREFERENCE-->
+                <li>
+                    <label for="pref">Préférence</label>
+                    <input list="pref-list" type="text" id="pref" name="pref"/>
+                        <datalist id="pref-list">
+                            <option>Bagues</option>
+                            <option>Colliers</option>
+                            <option>Boucles d'oreilles</option>
+                            <option>Bracelets</option>
+                        </datalist>
+                </li>
+
+                <!--        MESSAGE-->
+                <li>
+                    <label for="text_message" id="label_message">Message</label>
+                    <textarea rows="" cols="" id="text_message" name="text_message"></textarea>
+                </li>
+
+                <li><input type="submit" value="Valider" id="register" name="register"></li>
+            </ul>
+            <?php if($in_post){ echo "<p>Merci de corriger les champs comportants un *.</p>"; } ?>
+        </form>
+    </fieldset>
