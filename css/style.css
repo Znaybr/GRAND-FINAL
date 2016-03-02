@@ -65,10 +65,11 @@
 /* footer */
 
 #footer {
-    width: 100%;
+    width: 90%;
+    margin: auto;
     height: 150px;
     background-color: #8bd3e0;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 10%;
 }
 #facebook {
@@ -98,20 +99,18 @@
     display: inline-block;
     vertical-align: top;
     width: 52%;
-    margin-top:7%;
+    height: 150px;
     text-align:center;
-    height:100%;
 }
 
-
 #menu_foot li {
-    width: 80px;
     list-style: none;
-    text-align: center;
     display: inline;
-    margin-left:10px;
+}
 
-
+#menu_foot li a {
+    text-decoration: none;
+    color: white;
 }
 
 /*anim on hover*/
@@ -148,10 +147,6 @@
 
 }
 
-#menu_foot li a {
-    text-decoration: none;
-    color: white;
-}
 
 #administration {
     display: inline-block;
@@ -181,12 +176,95 @@
 
 /* css main */
 
-#image_index img {
-    height: 400px;
-    width: 400px;
+#main {
+    text-align: center;
+
 }
 
+#img_princ {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+#image_index {
+    display: inline-block;
+    width: 68%;
+    position: absolute;
+    right: 300px;
+    top: -25px;
+}
+#image_index figure img{
+    width: 600px;
+    height: 400px;
+
+}
+#details {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+    position: absolute;
+    right: 400px;
+    top: 100px;
+}
+#details p {
+    display: inline-block;
+    color: #8bd3e0;
+}
+#details h3 {
+    display: inline-block;
+
+}
+#details figcaption {
+    display: inline-block;
+}
+#categorie {
+    height: 200px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+#categorie > div {
+    display: inline-block;
+    height: 190px;
+    margin: 2%;
+    text-align: center;
+    vertical-align: top;
+}
+#categorie h3{
+    width: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    color: #8bd3e0;
+    display: inline-block;
+    opacity: 0;
+}
+#categorie h3:hover{
+    opacity: 1;
+}
+.separ {
+    width: 300px;
+}
+
+/*anim on hover*/
 
 
+
+
+.cercle {
+    border-radius:50%;
+    border:4px solid #8bd3e0;
+    background-image: url("");
+    width: 150px;
+    height: 150px;
+}
+.stylleillus {
+    background-image: url("../images");
+}
+
+#image_cat1 p {
+    width: 100px;
+    height: auto;
+}
 
 
