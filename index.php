@@ -49,7 +49,7 @@ require_once 'view_parts/_page_base.php';
     <section id="categorie">
 
         <div id="cat1">
-            <a href="produits.php">
+            <a href="?category_id=1">
         <div id="cercle1" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =1";
@@ -81,7 +81,7 @@ require_once 'view_parts/_page_base.php';
         </div>
 
         <div id="cat2">
-            <a href="produits.php">
+            <a href="?category_id=2">
         <div id="cercle2" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =2";
@@ -132,7 +132,7 @@ require_once 'view_parts/_page_base.php';
                 </a>
         </div>
         <div id="cat3">
-            <a href="produits.php">
+            <a href="?category_id=3">
         <div id="cercle3" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =3";
@@ -165,7 +165,7 @@ require_once 'view_parts/_page_base.php';
                 </a>
         </div>
         <div id="cat4">
-            <a href="produits.php">
+            <a href="?category_id=4">
         <div id="cercle4" class="cercle">
             <?php
             $query = "SELECT * FROM produits  WHERE  categorie =4";
