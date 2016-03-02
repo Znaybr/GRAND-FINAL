@@ -1,4 +1,6 @@
-
+/***********************************************************************************************/
+/******************************************FONT PERSO ******************************************/
+/***********************************************************************************************/
 @font-face {
     font-family: 'lavanderia_regular';
     src: url('../fonts/lavanderia_regular-webfont.eot');
@@ -13,12 +15,23 @@
 }
 
 
-/* header */
+/***********************************************************************************************/
+/*******************************************THEME GLOBALE***************************************/
+/***********************************************************************************************/
 * {
     margin: 0;
     padding: 0;
     font-family: 'Pontano Sans', sans-serif;
 }
+
+ul{
+    list-style: none;
+}
+
+
+/***********************************************************************************************/
+/**********************************************HEADER*******************************************/
+/***********************************************************************************************/
 
 #langage {
     display: inline-block;
@@ -58,8 +71,6 @@
     display: inline-block;
     width: 75%;
     margin-top: 35px;
-
-
 }
 
 #menu li{
@@ -67,8 +78,8 @@
     width: 20%;
     list-style: none;
     text-align: center;
-
 }
+
 #menu li a {
     color: #c4bdb7;
     text-decoration: none;
@@ -76,26 +87,25 @@
 }
 
 
-/* footer */
-
+/***********************************************************************************************/
+/**********************************************FOOTER*******************************************/
+/***********************************************************************************************/
 #footer {
     width: 90%;
     margin: auto;
-    height: 150px;
+    height: 100px;
     background-color: #8bd3e0;
     margin-top: 5%;
-    margin-bottom: 10%;
 }
 #facebook {
     width: 25%;
-    height: 90%;
+    height: 100%;
     display: inline-block;
-    margin-top: 1%;
-    border-right:1px solid white;
+    border-right: 1px solid white;
 }
 #facebook img {
     height: 30%;
-    margin-top: 15%;
+    margin-top: 11%;
     margin-left: 10%;
 }
 #facebook p {
@@ -112,7 +122,7 @@
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 #menu_foot li{
     display: inline-block;
@@ -127,58 +137,31 @@
     line-height: 25px;
 }
 
-/*anim on hover*/
-#menu_foot li:hover {
-    width: 80px;
-    list-style: none;
-    text-align: center;
-    display: inline;
-    margin-left:10px;
-
-    /*animation property*/
-    animation: menubottomanim 1s forwards ;
-}
-
-/*anim pour menu bottom*/
-@keyframes menubottomanim {
-    from{
-
-    }
-    to{
-       border-bottom:4px #8bd3e0 solid;
-        border-top:5px #8bd3e0 solid;
-
-    }
-
-}
 /*coordo*/
 #coordo {
-
-    display:inline-block;
+    display: inline-block;
     vertical-align: top;
-    width:60%;
-    margin-top:15%;
-
+    width: 60%;
+    margin-top: 10%;
 }
-
 
 #administration {
     display: inline-block;
     width: 20%;
     border-left: 1px solid white;
-    height: 90%;
-    margin-top: 1%;
+    height: 100%;
     vertical-align: top;
 }
 
 
-/* css main */
-
+/***********************************************************************************************/
+/***************************************CONTENU PAGE INDEX**************************************/
+/***********************************************************************************************/
 #main {
     text-align: center;
-
 }
 
+/*Image principale derniere creation*/
 #img_princ {
     width: 100%;
     height: 400px;
@@ -192,11 +175,13 @@
     right: 300px;
     top: -25px;
 }
+
 #image_index figure img{
     width: 600px;
     height: 400px;
-
 }
+
+/*Informations derniere creation*/
 #details {
     display: inline-block;
     width: 20%;
@@ -225,6 +210,8 @@
     margin-top: 50px;
     color: #c4bdb7;
 }
+
+/*BTNS_CATEGORIES PRINCIPALES*/
 #categorie {
     height: 300px;
     width: 80%;
@@ -255,10 +242,6 @@
 }
 
 /*anim on hover*/
-
-
-
-
 .cercle {
     border-radius:50%;
     border:4px solid #8bd3e0;
@@ -284,9 +267,10 @@
     height: auto;
 }
 
-/* css a propos réparations */
-
-#apropos, #repar {
+/***********************************************************************************************/
+/******************************************CONTENU PAGES****************************************/
+/******************************* réparation | à propos | contact *******************************/
+#apropos, #repar, #contact_page{
     width: 80%;
     margin: auto;
     margin-top: 40px;
@@ -296,16 +280,16 @@ fieldset {
     border:1px solid #c4bdb7;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
-    border-radius:4px;
+    border-radius:2px;
 }
-fieldset>div {
+fieldset>div, fieldset>p{
     margin: 20px;
 }
 legend {
     color: #8bd3e0;
-    margin: auto;
-    font-weight: 900;
-    font-size: x-large;
+    padding: 0 10px 0 10px;
+    margin: 0 auto;
+    font-size: 24px;
     font-family: 'lavanderia_regular';
 }
 fieldset div h2 {
@@ -320,8 +304,10 @@ fieldset>div img {
     vertical-align: top;
 }
 
-/* css page produits */
 
+/***********************************************************************************************/
+/**************************************CONTENU PAGE PRODUITS************************************/
+/***********************************************************************************************/
 #product {
     width: 90%;
     min-height: 800px;
@@ -352,4 +338,72 @@ fieldset>div img {
 #productdetail {
     display: inline-block;
     width: 80%;
+}
+
+
+
+/***********************************************************************************************/
+/**************************************CONTENU PAGE CONTACT*************************************/
+/***********************************************************************************************/
+
+#contact_page > fieldset > p{
+    text-align: center;
+    color: #c4bdb7;
+    font-size: 14px;
+}
+
+#contact_page #form_contact{
+    margin: 15px auto;
+    width: 40%;
+}
+
+#form_contact label{
+    display: inline-block;
+    width: 90px;
+    color: #6e6960;
+    text-align: left;
+}
+
+#form_contact input:nth-of-type(-n+8){
+    padding: 4px;
+    margin: 4px;
+    width: 76%;
+    border: 1px solid #c4bdb7;
+    box-shadow: 0 0 1px #c4bdb7 inset;
+}
+
+#form_contact #genre{
+    display: inline-block;
+    margin-left: 4px;
+}
+#form_contact #genre label{
+    display: inline-block;
+    width: 50px;
+}
+#form_contact #genre input{
+    display: inline-block;
+    width: 20px;
+    margin-right: 50px;
+}
+
+#form_contact #label_message{
+    vertical-align: top;
+}
+
+#form_contact textarea{
+    width: 76%;
+    height: 150px;
+    padding: 4px;
+    margin: 4px;
+    border: 1px solid #c4bdb7;
+    box-shadow: 0 0 1px #c4bdb7 inset;
+}
+
+#form_contact input[type="submit"] {
+    margin: 8px 0 20px 0;
+    padding: 4px;
+    width: 97%;
+    background-color: #41676e;
+    border: 1px solid #c4bdb7;
+    color: white;
 }

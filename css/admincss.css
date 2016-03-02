@@ -161,9 +161,9 @@ ul{
 }
 
 #ajout li:nth-of-type(3) input[type="submit"]{ /*BTN_SUBMIT*/
-    margin: 6px auto 0 40px;
+    margin: 6px auto 0 32px;
     padding: 4px;
-    width: 90%;
+    width: 92%;
     background-color: #41676e;
     border: 1px solid #c4bdb7;
     color: white;

@@ -7,8 +7,8 @@ $site_data[PAGE_IS_PUBLIC] = true; // définie toutes les page de facon initiale
 
 $site_data[MAIN_MENU] = array(
     'Accueil' => 'index.php',
-    'produits'=> 'produits.php',
+    'Créations'=> 'produits.php',
     'Contact' => 'contact.php',
-    'A propos' => 'apropos.php',
+    'À propos' => 'apropos.php',
     'Reparations' => 'reparation.php',
 );
