@@ -12,8 +12,8 @@ require_once 'view_parts/_page_base.php';
     <fieldset>
         <legend>Réparations</legend>
         <div>
-            <h2>Matériaux travaillés</h2>
-            <p>Tu autem, Fanni, quod mihi tantum tribui dicis quantum ego nec adgnosco nec postulo, facis amice; sed, ut mihi videris, non recte iudicas de </p>
+            <h2>Réparation de bijoux</h2>
+            <p>Réparations de bijoux en or, argent, cuivre :  soudures, mise à grandeur, griffes, chatons, ajout et transformation, serre doigt permanent, changement de fermoir, rivets, raccourcir ou allonger chaînes-colliers-bracelets, réenfilage de collier de perles ou fantaisies.</p>
             <div>
                 <img src="images/joallier1.jpg" alt="">
                 <img src="images/joallier2.jpg" alt="">
@@ -21,9 +21,9 @@ require_once 'view_parts/_page_base.php';
             </div>
         </div>
         <div>
-            <h2>Réalisations personnelles</h2>
+            <h2>Services</h2>
 
-            <p>Tu autem, Fanni, quod mihi tantum tribui dicis quantum ego nec adgnosco nec postulo, facis amice; sed, ut mihi videris, non recte iudicas de Catone; aut enim nemo, quod quidem magis credo, aut si quisquam, ille </p>
+            <p>Lorsque vous nous soumettrez un bijou à modifier ou à réparer, nous vous remettrons au préalable une estimation du coût de la réparation. Cela sans aucun frais.</p>
         </div>
     </fieldset>
 

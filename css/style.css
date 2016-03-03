@@ -258,6 +258,7 @@ ul{
     height: 150px;
     margin-bottom: 20px;
 }
+
 .stylleillus {
     background-image: url("../images");
 }
@@ -274,6 +275,11 @@ ul{
     width: 80%;
     margin: auto;
     margin-top: 40px;
+}
+
+#apropos p, #repar p {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 fieldset {
@@ -301,7 +307,9 @@ fieldset div p {
 fieldset>div img {
     display: inline-block;
     width: 33%;
+    margin-top: 10px;
     vertical-align: top;
+    height: 200px;
 }
 
 
@@ -336,6 +344,14 @@ h1 {
     position: absolute;
     left: 10%;
 }
+#productclas > div > a {
+    text-decoration: no-underline;
+}
+#productclas h3 {
+    color: #8bd3e0;
+    font-family: 'lavanderia_regular';
+    font-size: 200%;
+}
 #productclas>div {
     display: inline-block;
     width: 100%;
@@ -352,20 +368,22 @@ h1 {
     width: 250px;
     height: 350px;
     text-align: center;
+    margin: 5px;
 }
 
 #once h3 {
     font-family: 'lavanderia_regular';
-    color: #8bd3e0;
-    margin-bottom: 50px;
+    color: #c4bdb7;
+    font-size: 300%;
+    margin-top: 270px;
 }
 #once figcaption {
     color: #41676e;
-    margin-bottom: 30px;
+    margin-top: 30px;
 }
 #once p {
     color: #c4bdb7;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 

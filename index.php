@@ -64,7 +64,8 @@ require_once 'view_parts/_page_base.php';
                     . "#cercle1{
                     background-image:url("
                     ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;".
+                    background-size: cover;
+                    background-position:center;".
                     "}"
                     ."</style>";
 
@@ -100,7 +101,8 @@ require_once 'view_parts/_page_base.php';
                     . "#cercle2{
                     background-image:url("
                     ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;".
+                    background-size: cover;
+                    background-position:center;".
                     "}"
                  ."</style>";
 
@@ -134,7 +136,8 @@ require_once 'view_parts/_page_base.php';
                     . "#cercle3{
                     background-image:url("
                     ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;".
+                    background-size: cover;
+                    background-position:center;".
                     "}"
                     ."</style>";
 
@@ -167,7 +170,8 @@ require_once 'view_parts/_page_base.php';
                     . "#cercle4{
                     background-image:url("
                     ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;".
+                    background-size: cover;
+                    background-position:center;".
                     "}"
                     ."</style>";
 
