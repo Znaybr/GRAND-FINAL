@@ -10,7 +10,6 @@ function valider() {
     console.log(password_ok ? 'pass valide' : 'pass pas valide');
 
     $(infos_admin).show();
-
 }
 
 
@@ -27,3 +26,6 @@ $(function() {
         return validation_ok;
     });
 });
+
+
+
