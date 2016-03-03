@@ -1,7 +1,7 @@
 <?php
-
 $in_post=array_key_exists("register", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
+//var_dump($_POST);
 
 
 //*****************************************************************************************************VALIDATION PRENOM
@@ -66,45 +66,44 @@ if (array_key_exists("ville", $_POST)) {
         var_dump($ville_ok);*/
 
 //*****************************************************************************************************VALIDATION SEXE
-if (array_key_exists("sexe", $_POST)) {
-    $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_STRING);
+if (array_key_exists("genre", $_POST)) {
+    $sexe = $_POST["genre"];
 }
-/*    var_dump($ville);
-    var_dump($ville_ok);*/
+//var_dump($_POST["genre"]);
 
 //*****************************************************************************************************VALIDATION PREFERENCE
-if (array_key_exists("preference", $_POST)) {
-    $preference = filter_input(INPUT_POST, "preference", FILTER_SANITIZE_STRING);
+if (array_key_exists("pref", $_POST)) {
+    $preference = $_POST["pref"];
 }
-/*    var_dump($ville);
-    var_dump($ville_ok);*/
+//var_dump($_POST["pref"]);
+
+
 
 //*****************************************************************************************************VALIDATION MESSAGE
 $message_ok = false;
 $message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
-if (array_key_exists("message", $_POST)) {
-    $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING );
+if (array_key_exists("text_message", $_POST)) {
+    $message = filter_input(INPUT_POST, "text_message", FILTER_SANITIZE_STRING );
     $message_ok = (1 === preg_match("/^[A-Za-z0-9]{20,}$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$message_ok){ // si nom est non valide
         $message_message="Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
     }
-    var_dump($message);
-    var_dump($message_ok);
+//    var_dump($message);
+//    var_dump($message_ok);
 }
 
 
 
 
 //**************************************VALIDATION ET ENVOI**************************************************
-if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
+if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok/*true*/){
     //on enregistre les données et s'en va sur une autres page
-    require_once "../db/P62_DBkitDem_messages.php";
+    require_once "db/P62_DBkitDem_messages.php";
     $message_info = message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message);
-//    header("Location: index.php");
-    exit;
+//    $message_info = message_add('dfdf', 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'homme', 'dfgdfgdgdfgdf', 'sdsdfdssdfsdfsfsfsdf');
+    header("Location: index.php");
+   exit;
 }
-
-
 ?>
 
 
@@ -163,10 +162,10 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
                 <!--        SEXE-->
                 <li><label>Sexe : </label>
                     <div id="genre">
-                        <label id="f" for="genre_femme">Femme</label>
-                        <input type="radio" id="genre_femme" name="genre" value="genre_femme"/>
-                        <label id="h" for="genre_homme">Homme</label>
-                        <input type="radio" id="genre_homme" name="genre" value="genre_homme"/>
+                        <label id="f" for="femme">Femme</label>
+                        <input type="radio" id="femme" name="genre" value="femme"/>
+                        <label id="h" for="homme">Homme</label>
+                        <input type="radio" id="homme" name="genre" value="homme"/>
                     </div>
                 </li>
 
@@ -175,10 +174,10 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
                     <label for="pref">Préférence</label>
                     <input list="pref-list" type="text" id="pref" name="pref"/>
                         <datalist id="pref-list">
-                            <option>Bagues</option>
-                            <option>Colliers</option>
-                            <option>Boucles d'oreilles</option>
-                            <option>Bracelets</option>
+                            <option value="1">Bagues</option>
+                            <option value="2">Colliers</option>
+                            <option value="3">Boucles d'oreilles</option>
+                            <option value="4">Bracelets</option>
                         </datalist>
                 </li>
 
