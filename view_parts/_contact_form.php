@@ -3,31 +3,35 @@
 $in_post=array_key_exists("register", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
 
+
+//*****************************************************************************************************VALIDATION PRENOM
 $prenom_ok = false;
 $prenom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("prenom", $_POST)) {
     $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_STRING );
     $prenom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $prenom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$prenom_ok){ // si prenom est non valide
-        $prenom_message="Votre prénom doit être inscrit au complet lettres";
+        $prenom_message="Votre prénom doit être inscrit au complet";
     }
     /*    var_dump($prenom);
         var_dump($prenom_ok);
         var_dump($prenom_message);*/
 }
 
+//*****************************************************************************************************VALIDATION NOM
 $nom_ok = false;
 $nom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("nom", $_POST)) {
     $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
     $nom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$nom_ok){ // si nom est non valide
-        $nom_message="Votre nom doit être inscrit au complet lettres";
+        $nom_message="Votre nom doit être inscrit au complet";
     }
     /*    var_dump($nom);
         var_dump($nom_ok);*/
 }
 
+//*****************************************************************************************************VALIDATION COURRIEL
 $courriel_ok = false;
 $courriel_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("courriel", $_POST)) {
@@ -41,12 +45,12 @@ if (array_key_exists("courriel", $_POST)) {
         var_dump($courriel_ok);*/
 }
 
+//*****************************************************************************************************VALIDATION TELEPHONE
 $telephone_ok = false;
 $telephone_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("telephone", $_POST)) {
     $telephone = filter_input(INPUT_POST, "telephone", FILTER_SANITIZE_STRING );
     $telephone_ok = (1 === preg_match('/^\(?\d{3}\)?[-\.\s]?\d{3}[-\.\s]?\d{4}$/', $telephone));  // 1 siginifie que la condition est vraie et vérifiée
-    $telephone_ok = (false !== $telephone);
     if(!$telephone_ok) { // si nom est non valide
         $telephone_message="Ce champs doit comporter un numéro de téléphone valide";
     }
@@ -54,6 +58,28 @@ if (array_key_exists("telephone", $_POST)) {
         var_dump($telephone_ok);*/
 }
 
+//*****************************************************************************************************VALIDATION VILLE
+if (array_key_exists("ville", $_POST)) {
+    $ville = filter_input(INPUT_POST, "ville", FILTER_SANITIZE_STRING);
+}
+    /*    var_dump($ville);
+        var_dump($ville_ok);*/
+
+//*****************************************************************************************************VALIDATION SEXE
+if (array_key_exists("sexe", $_POST)) {
+    $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_STRING);
+}
+/*    var_dump($ville);
+    var_dump($ville_ok);*/
+
+//*****************************************************************************************************VALIDATION PREFERENCE
+if (array_key_exists("preference", $_POST)) {
+    $preference = filter_input(INPUT_POST, "preference", FILTER_SANITIZE_STRING);
+}
+/*    var_dump($ville);
+    var_dump($ville_ok);*/
+
+//*****************************************************************************************************VALIDATION MESSAGE
 $message_ok = false;
 $message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("message", $_POST)) {
@@ -62,15 +88,19 @@ if (array_key_exists("message", $_POST)) {
     if(!$message_ok){ // si nom est non valide
         $message_message="Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
     }
-    /*    var_dump($message);
-        var_dump($message_ok);*/
+    var_dump($message);
+    var_dump($message_ok);
 }
 
+
+
+
+//**************************************VALIDATION ET ENVOI**************************************************
 if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
     //on enregistre les données et s'en va sur une autres page
     require_once "../db/P62_DBkitDem_messages.php";
     $message_info = message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message);
-    header("Location: index.php");
+//    header("Location: index.php");
     exit;
 }
 
@@ -83,7 +113,7 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
 
         <p>Laissez nous un message, vos questions ainsi que vos coordonnées, nous vous répondrons prochainement.</p>
 
-        <form id="form_contact" action="index.php" method="post">
+        <form id="form_contact" action="" method="post">
             <ul>
                 <!--        PRENOM-->
                 <li><label for="prenom">Prénom <span>*</span></label>
@@ -157,8 +187,11 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok){
                     <label for="text_message" id="label_message">Message</label>
                     <textarea rows="" cols="" id="text_message" name="text_message"></textarea>
                 </li>
+                <?php if ($in_post && ! $message_ok){
+                    echo "<p>$message_message</p>";
+                }  ?>
 
-                <li><input type="submit" value="Valider" id="register" name="register"></li>
+                <li><input type="submit" value="Envoyer" id="register" name="register"></li>
             </ul>
             <?php if($in_post){ echo "<p>Merci de corriger les champs comportants un *.</p>"; } ?>
         </form>

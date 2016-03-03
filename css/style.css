@@ -357,6 +357,13 @@ fieldset>div img {
     width: 40%;
 }
 
+#form_contact li + p{
+    margin-left: 90px;
+    text-align: center;
+    font-size: 12px;
+    color: #8bd3e0;
+}
+
 #form_contact label{
     display: inline-block;
     width: 90px;
