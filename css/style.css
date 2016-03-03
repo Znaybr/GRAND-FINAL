@@ -33,15 +33,9 @@ ul{
 /**********************************************HEADER*******************************************/
 /***********************************************************************************************/
 
-#langage {
-    display: inline-block;
-    width:10%;
-    height: 25px;
-    margin-left: 65%;
-    vertical-align: top;
-    text-align: right;
-}
+
 #header {
+    width: 100%;
     height: 150px;
     margin-top: 15px;
 }
@@ -51,26 +45,38 @@ ul{
     width: 10%
 }
 
+#langage {
+    display: inline-block;
+    width: 10%;
+    height: 25px;
+    margin-left: 65%;
+    vertical-align: top;
+    text-align: right;
+}
+
+#langage p {
+    display: inline-block;
+    font-weight: lighter;
+    color: #c4bdb7;
+    vertical-align: top;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
 #langage img {
     display: inline;
     width:15%;
     right: 0;
 }
 
-#langage p {
-    display: inline;
-    font-weight: lighter;
-    width: 10%;
-    color: #c4bdb7;
-}
-
 #menu {
-    border-bottom:1px solid #8bd3e0;
-    border-top:1px solid #8bd3e0;
-    height:25px;
+    border-bottom: 1px solid #8bd3e0;
+    border-top: 1px solid #8bd3e0;
+    height: 25px;
     display: inline-block;
     width: 75%;
-    margin-top: 35px;
+    margin-top: 15px;
+    padding: 8px;
 }
 
 #menu li{
@@ -159,96 +165,95 @@ ul{
 /***********************************************************************************************/
 #main {
     text-align: center;
+    margin-top: -3%;
 }
 
 /*Image principale derniere creation*/
 #img_princ {
-    width: 100%;
+    text-align: left;
     height: 400px;
     position: relative;
 }
 
 #image_index {
     display: inline-block;
-    width: 68%;
-    position: absolute;
-    right: 300px;
-    top: -25px;
+    vertical-align: top;
+    width: 36%;
+    /*margin-left: 10%;*/
 }
 
-#image_index figure img{
-    width: 600px;
-    height: 400px;
-}
 
 /*Informations derniere creation*/
 #details {
     display: inline-block;
     width: 20%;
     vertical-align: top;
-    position: absolute;
-    right: 400px;
-    top: 50px;
-    height: 200px;
+    margin-top: 250px;
+    margin-left: 40px;
 }
 #details p {
     display: inline-block;
     color: #8bd3e0;
-    font-size: x-large;
-    margin-bottom: 20px;
+    font-size: 31px;
     font-family: 'lavanderia_regular';
 }
 #details h3 {
-    display: inline;
-    margin-left: 60px;
-    margin-right: 10px;
-    color: #c4bdb7;
+    color: #41676e;
     text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
 }
 #details figcaption {
     display: inline-block;
-    margin-top: 50px;
-    color: #c4bdb7;
+    color: #6e6960;
 }
 
 /*BTNS_CATEGORIES PRINCIPALES*/
 #categorie {
-    height: 300px;
     width: 80%;
-    margin: auto;
+    margin: 170px auto;
     text-align: center;
 }
 #categorie > div {
     display: inline-block;
-    height: 280px;
     margin: 2%;
     text-align: center;
     vertical-align: top;
-    width: 18%;
 }
-#categorie h3{
-    width: auto;
-    margin-top: 80px;
-    margin-bottom: 60px;
-    color: #8bd3e0;
+
+.cercle .hover{
+    text-align: center;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0,0,0,0.2);
     display: inline-block;
     opacity: 0;
 }
-#categorie h3:hover{
+.cercle .hover > h3{
+    line-height: 150px;
+    vertical-align: middle;
+    color: white;
+    font-size: 18px;
+    margin: auto;
+}
+.cercle .hover:hover{
     opacity: 1;
 }
+
 .separ {
     width: 300px;
+    display: block;
+    margin: 0 auto;
 }
 
 /*anim on hover*/
 .cercle {
     border-radius:50%;
-    border:4px solid #8bd3e0;
-    background-image: url("");
-    width: 100%;
-    height: 200px;
-    margin-top: 20px;
+    box-shadow: 0 0 15px #8bd3e0;
+    width: 150px;
+    height: 150px;
+    margin: 20px 20px;
 }
 .cercle2 {
     border-radius:50%;
@@ -262,10 +267,8 @@ ul{
     background-image: url("../images");
 }
 
-#image_cat1 p {
-    width: 100px;
-    height: auto;
-}
+
+
 
 /***********************************************************************************************/
 /******************************************CONTENU PAGES****************************************/
