@@ -178,6 +178,8 @@ require_once 'view_parts/_page_base.php';
 
                 "<h3>".$row["nom"]."</h3>".
 
+
+
                 "<figcaption>".$row["description"]."</figcaption>".
                 "<p>".$row["materiaux"]."</p>".
 
