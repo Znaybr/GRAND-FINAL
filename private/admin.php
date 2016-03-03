@@ -64,9 +64,17 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
 
 ?>
 
+
+
+
+<!--***********************************************************************************************-->
+<!--*******************************************PAGE HTML*******************************************-->
+<!--***********************************************************************************************-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
+<!--HEAD-->
 <head>
     <meta charset="UTF-8">
     <title>Ma partie administration - CONNECTÉE</title>
@@ -78,6 +86,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
 </head>
 
 
+<!--BODY-->
 <body>
 
 <!--    ADMIN LOGIN-->
@@ -99,7 +108,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
 <!--        <img src="../images/imagesweb/logo.png" alt="logo Bijoux d'Élise" title="Entrée sur la partie admin">-->
         <img src="../images/imagesweb/separation.png" alt="tiret de séparation" title="sparation des catégories">
 
-        <!--CREATION/AJOUT PRODUIT-->
+        <!--PARTIE - CREATION/AJOUT PRODUIT-->
         <section>
             <h2>Ajout d'une création</h2>
             <form name="ajout" id="ajout" method="post" action="_upload.php">
@@ -122,9 +131,18 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
                                class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
 
+
+<!--                <!--CATEGORIE-->-->
+<!--                    <label for="categorie">Catégorie <span>--><?php //echo $warning_categorie ?><!--</span></label>-->
+<!--                    <input type="text" id="categorie" name="categorie"-->
+<!--                            class="--><?php //echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?><!--"-->
+<!--                            value="--><?php //echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?><!--"/>-->
+
+
+
                     <!--CATEGORIE-->
                         <label for="categorie">Catégorie <span><?php echo $warning_categorie ?></span></label>
-                        <input type="text" id="categorie" name="categorie"
+                        <input list="" type="text" id="categorie" name="categorie"
                                class="<?php echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?>"/>
 
@@ -150,7 +168,8 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
 
         <img src="../images/imagesweb/separation.png" alt="tiret de séparation" title="sparation des catégories">
 
-        <!--LISTE DES CONTACTS-->
+
+        <!--PARTIE - LISTE DES CONTACTS-->
         <section>
             <h2>Liste de contacts</h2>
             <table>
