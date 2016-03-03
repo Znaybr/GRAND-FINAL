@@ -52,23 +52,11 @@ require_once 'view_parts/_page_base.php';
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-                    //initialiser tableau vide
+
 
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
-                        //ajouter valleur dans un tableau .push?
-                        //array.push($row['illustration'])
-                        //random avec comme limite array.lenght == nbrRandom
-                        //`fin while
 
-                        //echo
-//                "<style>"
-//                . "#cercle2{
-//                    background-image:url("
-//                ." '" ."images". "/".$array`[random]." ');
-//                    background-size: cover;".
-//                "}"
-////                ."</style>";
 
 
                         $row["id"];

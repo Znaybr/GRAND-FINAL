@@ -151,6 +151,14 @@ ul{
     border-left: 1px solid white;
     height: 100%;
     vertical-align: top;
+    text-align: center;
+}
+#administration p {
+    margin-top: 17%;
+}
+#administration p a {
+    color: white;
+    text-decoration: none;
 }
 
 

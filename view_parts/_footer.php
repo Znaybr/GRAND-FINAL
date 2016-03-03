@@ -11,7 +11,7 @@
         <?php require '_main_menu.php'; ?>
     </div>
     <div id="administration">
-
+         <p><a href="private/admin.php" title="lien d'administration">Administration</a></p>
     </div>
 </div>
 
