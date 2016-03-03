@@ -86,24 +86,6 @@ require_once 'view_parts/_page_base.php';
 
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
-                        //ajouter valleur dans un tableau .push?
-                        //array.push($row['illustration'])
-                        //random avec comme limite array.lenght == nbrRandom
-                        //`fin while
-
-                        //echo
-        //                "<style>"
-        //                . "#cercle2{
-        //                    background-image:url("
-        //                ." '" ."images". "/".$array`[random]." ');
-        //                    background-size: cover;".
-        //                "}"
-        ////                ."</style>";
-                        $row["id"];
-            while ($row = $results->fetch(PDO::FETCH_ASSOC))
-            {
-
-
                 $row["id"];
 
                         echo
@@ -200,7 +182,3 @@ require_once 'view_parts/_page_base.php';
 <?php
 require_once 'view_parts/_page_buttom.php';
 ?>
-
-
-
-

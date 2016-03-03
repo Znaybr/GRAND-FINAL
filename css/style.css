@@ -263,19 +263,6 @@ ul{
     height: 150px;
     margin: 20px 20px;
 }
-.cercle2 {
-    border-radius:50%;
-    border:4px solid #8bd3e0;
-    background-image: url("");
-    width: 60%;
-    height: 150px;
-    margin-bottom: 20px;
-}
-
-.stylleillus {
-    background-image: url("../images");
-}
-
 
 
 
@@ -355,13 +342,13 @@ h1 {
     position: absolute;
     left: 10%;
 }
-#productclas > div > a {
-    text-decoration: no-underline;
-}
+
 #productclas h3 {
-    color: #8bd3e0;
-    font-family: 'lavanderia_regular';
-    font-size: 200%;
+    line-height: 150px;
+    vertical-align: middle;
+    color: white;
+    font-size: 18px;
+    margin: auto;
 }
 #productclas>div {
     display: inline-block;
@@ -374,7 +361,7 @@ h1 {
     position: absolute;
     right: 10%;
 }
-#once {
+.once {
     display: inline-block;
     width: 250px;
     height: 350px;
@@ -382,17 +369,17 @@ h1 {
     margin: 5px;
 }
 
-#once h3 {
+.once h3 {
     font-family: 'lavanderia_regular';
     color: #c4bdb7;
     font-size: 300%;
     margin-top: 270px;
 }
-#once figcaption {
+.once figcaption {
     color: #41676e;
     margin-top: 30px;
 }
-#once p {
+.once p {
     color: #c4bdb7;
     margin-top: 10px;
 }
@@ -411,7 +398,7 @@ h1 {
 
 #contact_page #form_contact{
     margin: 15px auto;
-    width: 40%;
+    width: 50%;
 }
 
 #form_contact li + p{

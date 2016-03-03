@@ -11,9 +11,10 @@ require_once 'view_parts/_page_base.php';
 <div id="product">
 
     <div id="productclas">
+        <!--CATEGORIE 1-->
         <div id="cat1">
-            <a href="?categorie=1">
-                <div id="cercle1" class="cercle2">
+            <a href="?category_id=1">
+                <div id="cercle1" class="cercle">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =1";
 
@@ -23,70 +24,65 @@ require_once 'view_parts/_page_base.php';
                     {
                         $row["id"];
 
-
                         echo
-
                             "<style>"
                             . "#cercle1{
-                    background-image:url("
+                            background-image:url("
                             ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;
-                    background-position:center;".
+                            background-size: cover;".
                             "}"
                             ."</style>";
-
-
                     }
                     ?>
-                    <h3>Bagues</h3>
-                </div>
 
+                    <!--HOVER APPARITION AU SURVOL-->
+                    <div class="hover">
+                        <h3>Bagues</h3>
+                    </div>
+                </div>
             </a>
         </div>
 
+        <!--CATEGORIE 2-->
         <div id="cat2">
-            <a href="?categorie=2">
-                <div id="cercle2" class="cercle2">
+            <a href="?category_id=2">
+                <div id="cercle2" class="cercle">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =2";
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-
+                    //initialiser tableau vide
 
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
-
-
-
                         $row["id"];
 
-
                         echo
-
                             "<style>"
                             . "#cercle2{
-                    background-image:url("
+                            background-image:url("
                             ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;
-                    background-position:center;".
+                            background-size: cover;".
                             "}"
                             ."</style>";
-
-
-
-
-
                     }
 
                     ?>
-                    <h3>Pendentifs</h3>
+
+                    <!--HOVER APPARITION AU SURVOL-->
+                    <div class="hover">
+                        <h3>Pendentifs</h3>
+                    </div>
                 </div>
             </a>
         </div>
+
+
+        <!--CATEGORIE 3-->
         <div id="cat3">
-            <a href="?categorie=3">
-                <div id="cercle3" class="cercle2">
+            <a href="?category_id=3">
+                <div id="cercle3" class="cercle">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =3";
 
@@ -96,31 +92,29 @@ require_once 'view_parts/_page_base.php';
                     {
                         $row["id"];
 
-
                         echo
-
                             "<style>"
                             . "#cercle3{
-                    background-image:url("
+                            background-image:url("
                             ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;
-                    background-position:center;".
+                            background-size: cover;".
                             "}"
                             ."</style>";
-
-
-
-
-
                     }
                     ?>
-                    <h3>Boucles d'oreilles</h3>
+
+                    <!--HOVER APPARITION AU SURVOL-->
+                    <div class="hover">
+                        <h3>Boucles d'oreilles</h3>
+                    </div>
                 </div>
             </a>
         </div>
+
+        <!--CATEGORIE 4-->
         <div id="cat4">
-            <a href="?categorie=4">
-                <div id="cercle4" class="cercle2">
+            <a href="?category_id=4">
+                <div id="cercle4" class="cercle">
                     <?php
                     $query = "SELECT * FROM produits  WHERE  categorie =4";
 
@@ -135,19 +129,24 @@ require_once 'view_parts/_page_base.php';
 
                             "<style>"
                             . "#cercle4{
-                    background-image:url("
+                            background-image:url("
                             ." '" ."images". "/".$row['illustration']." ');
-                    background-size: cover;
-                    background-position:center;".
+                            background-size: cover;".
                             "}"
                             ."</style>";
 
                     }
                     ?>
-                    <h3>Bracelets</h3>
+
+                    <!--HOVER APPARITION AU SURVOL-->
+                    <div class="hover">
+                        <h3>Bracelets</h3>
+                    </div>
                 </div>
             </a>
         </div>
+
+
     </div>
     <img src="images/imagesweb/separation.png" alt="ligne de séparation" class="separ"/>
     <div id="productdetail">
@@ -162,10 +161,10 @@ require_once 'view_parts/_page_base.php';
 
         while ($row = $results->fetch(PDO::FETCH_ASSOC)){
             echo
-                "<div id= 'once' >" .
+                "<div id='char_set'>" .
 
                 "<style>"
-                . "#once{
+                . ".once{
                     background-image:url("
                 ." '" ."images". "/".$row['illustration']." ');
                     background-position:center;
@@ -194,3 +193,7 @@ require_once 'view_parts/_page_base.php';
 <?php
 require_once 'view_parts/_page_buttom.php';
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/main.js"></script>
