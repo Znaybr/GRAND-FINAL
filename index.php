@@ -99,9 +99,6 @@ require_once 'view_parts/_page_base.php';
         //                    background-size: cover;".
         //                "}"
         ////                ."</style>";
-                        $row["id"];
-            while ($row = $results->fetch(PDO::FETCH_ASSOC))
-            {
 
 
                 $row["id"];

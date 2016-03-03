@@ -374,27 +374,10 @@ h1 {
     position: absolute;
     right: 10%;
 }
-#once {
+.photo {
     display: inline-block;
-    width: 250px;
+    width: 30%;
     height: 350px;
-    text-align: center;
-    margin: 5px;
-}
-
-#once h3 {
-    font-family: 'lavanderia_regular';
-    color: #c4bdb7;
-    font-size: 300%;
-    margin-top: 270px;
-}
-#once figcaption {
-    color: #41676e;
-    margin-top: 30px;
-}
-#once p {
-    color: #c4bdb7;
-    margin-top: 10px;
 }
 
 

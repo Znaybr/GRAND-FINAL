@@ -162,18 +162,18 @@ require_once 'view_parts/_page_base.php';
 
         while ($row = $results->fetch(PDO::FETCH_ASSOC)){
             echo
-                "<div id= 'once' >" .
 
-                "<style>"
-                . "#once{
-                    background-image:url("
-                ." '" ."images". "/".$row['illustration']." ');
-                    background-position:center;
-                    background-size:cover;
-                    background-repeat:no-repeat;
-                    ".
-                "}"
-                ."</style>".
+
+            "<div class='photo' style='background-image:url(" ."images". "/".$row['illustration'].");
+             background-position:center;
+             background-size:cover;
+             background-repeat:no-repeat;
+            '>".
+
+
+
+
+
 
 
                 "<h3>".$row["nom"]."</h3>".
