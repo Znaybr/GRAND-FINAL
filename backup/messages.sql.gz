@@ -1,0 +1,51 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Client :  127.0.0.1
+-- Généré le :  Ven 04 Mars 2016 à 10:33
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `p71h16christhibaut`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID unique de chaque message',
+  `prenom` varchar(50) NOT NULL COMMENT 'prénom du contact',
+  `nom` varchar(50) NOT NULL COMMENT 'nom du contact',
+  `courriel` varchar(50) NOT NULL COMMENT 'courriel de réponse',
+  `telephone` varchar(24) DEFAULT NULL COMMENT 'téléphone (optionnel)',
+  `ville` varchar(50) DEFAULT NULL COMMENT 'ville (optionnel)',
+  `sexe` enum('homme','femme','','') DEFAULT NULL,
+  `preference` varchar(150) DEFAULT NULL,
+  `message` varchar(1024) NOT NULL COMMENT 'message recu',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `prenom`, `nom`, `courriel`, `telephone`, `ville`, `sexe`, `preference`, `message`) VALUES
+(11, 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'homme', 'dfgdfgdgdfgdf', 'sdsdfdssdfsdfsfsfsdf');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
