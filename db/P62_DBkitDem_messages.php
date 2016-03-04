@@ -5,7 +5,6 @@
  * 	- lister les catégories de produits
  * 	- lister les produits, tous ou par catégorie
  */
-
 require_once('P62_DBkitDem_conn.php');
 require_once('P62_DBkitDem_common.php');
 
@@ -13,25 +12,25 @@ require_once('P62_DBkitDem_common.php');
 /**
  * Liste des colonnes de la table product
  */
-define('PRODUCT_TB_COL_ID', 'id');
-define('PRODUCT_TB_COL_PRENOM', 'prenom');
-define('PRODUCT_TB_COL_NOM', 'nom');
-define('PRODUCT_TB_COL_COURRIEL', 'courriel');
-define('PRODUCT_TB_COL_TELEPHONE', 'telephone');
-define('PRODUCT_TB_COL_VILLE', 'ville');
-define('PRODUCT_TB_COL_SEXE', 'sexe');
-define('PRODUCT_TB_COL_PREFERENCE', 'preference');
-define('PRODUCT_TB_COL_MESSAGE', 'message');
+define('MESSAGE_TB_COL_ID', 'id');
+define('MESSAGE_TB_COL_PRENOM', 'prenom');
+define('MESSAGE_TB_COL_NOM', 'nom');
+define('MESSAGE_TB_COL_COURRIEL', 'courriel');
+define('MESSAGE_TB_COL_TELEPHONE', 'telephone');
+define('MESSAGE_TB_COL_VILLE', 'ville');
+define('MESSAGE_TB_COL_SEXE', 'sexe');
+define('MESSAGE_TB_COL_PREFERENCE', 'preference');
+define('MESSAGE_TB_COL_MESSAGE', 'message');
 $product_tb_cols = array(
-    PRODUCT_TB_COL_ID,
-    PRODUCT_TB_COL_PRENOM,
-    PRODUCT_TB_COL_NOM,
-    PRODUCT_TB_COL_COURRIEL,
-    PRODUCT_TB_COL_TELEPHONE,
-    PRODUCT_TB_COL_VILLE,
-    PRODUCT_TB_COL_SEXE,
-    PRODUCT_TB_COL_PREFERENCE,
-    PRODUCT_TB_COL_MESSAGE,
+    MESSAGE_TB_COL_ID,
+    MESSAGE_TB_COL_PRENOM,
+    MESSAGE_TB_COL_NOM,
+    MESSAGE_TB_COL_COURRIEL,
+    MESSAGE_TB_COL_TELEPHONE,
+    MESSAGE_TB_COL_VILLE,
+    MESSAGE_TB_COL_SEXE,
+    MESSAGE_TB_COL_PREFERENCE,
+    MESSAGE_TB_COL_MESSAGE,
 );
 
 /**
@@ -40,24 +39,26 @@ $product_tb_cols = array(
 function message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message) {
     global $pdo, $product_tb_cols;
     $resultat = false; // Mode défensif
-    $queryStr = 'INSERT INTO ' . P62_DBKITDEM_TB_PRODUCT . '(' . get_tb_cols($product_tb_cols) . ') VALUES (' . get_tb_cols($product_tb_cols, COLON_CAR) . ')';
+//    INSERT INTO `p71h16christhibaut`.`messages` (`id`, `prenom`, `nom`, `courriel`, `telephone`, `ville`, `sexe`, `preference`, `message`) VALUES (NULL, 'sdfvdsfsdfsdf', 'sdfsdfsdfsdfsdf', 'thththth', '5555555', 'dfdfdfdfdfdfd', 'homme', 'dddddddddddddddddddd', 'ddddddddddddddddddddddddddddddd');
+
+    $queryStr = 'INSERT INTO ' . P62_DBKITDEM_TB_MESSAGES. '(' . get_tb_cols($product_tb_cols) . ') VALUES (' . get_tb_cols($product_tb_cols, COLON_CAR) . ')';
     $sth = $pdo->prepare($queryStr);
     $params = array(
-        COLON_CAR . PRODUCT_TB_COL_PRENOM => $prenom,
-        COLON_CAR . PRODUCT_TB_COL_NOM => $nom,
-        COLON_CAR . PRODUCT_TB_COL_COURRIEL => $courriel,
-        COLON_CAR . PRODUCT_TB_COL_TELEPHONE => $telephone,
-        COLON_CAR . PRODUCT_TB_COL_VILLE => $ville,
-        COLON_CAR . PRODUCT_TB_COL_SEXE => $sexe,
-        COLON_CAR . PRODUCT_TB_COL_PREFERENCE => $preference,
-        COLON_CAR . PRODUCT_TB_COL_MESSAGE => $message,
+        COLON_CAR . MESSAGE_TB_COL_PRENOM => $prenom,
+        COLON_CAR . MESSAGE_TB_COL_NOM => $nom,
+        COLON_CAR . MESSAGE_TB_COL_COURRIEL => $courriel,
+        COLON_CAR . MESSAGE_TB_COL_TELEPHONE => $telephone,
+        COLON_CAR . MESSAGE_TB_COL_VILLE => $ville,
+        COLON_CAR . MESSAGE_TB_COL_SEXE => $sexe,
+        COLON_CAR . MESSAGE_TB_COL_PREFERENCE => $preference,
+        COLON_CAR . MESSAGE_TB_COL_MESSAGE => $message,
     );
     $res = $sth->execute($params);
     $sth->debugDumpParams();
     var_dump($params);
     var_dump($res);
     if ( ! $res || ($sth->rowCount()  == 0)) {
-        throw new Exception("Echec lors de la tentative d'ajout du produit $nom : (" . $sth->errorInfo()[0] . ")<br/>");
+        throw new Exception("Echec lors de la tentative d'ajout du message $nom : (" . $sth->errorInfo()[0] . ")<br/>");
     }
     $inserted_user_id = $pdo->lastInsertId();
     if ($res) {
@@ -105,20 +106,20 @@ function product_list($category_id = false, $name = false) {
     $resultat = false; // Par défaut n'existe pas
     $queryStr = 'SELECT * FROM ' . P62_DBKITDEM_TB_PRODUCT;
     if (false !== $category_id) {
-        $queryStr .= ' WHERE ' . get_tb_col_pair(PRODUCT_TB_COL_VILLE);
+        $queryStr .= ' WHERE ' . get_tb_col_pair(MESSAGE_TB_COL_VILLE);
     }
     if (false !== $name) {
         $queryStr .= (strpos($queryStr, 'WHERE') > 0) ? ' AND ' : ' WHERE '; // Suivant qu'une clause WHERE est déjà présente
-        $queryStr .= get_tb_col_pair(PRODUCT_TB_COL_NOM, 'LIKE');
+        $queryStr .= get_tb_col_pair(MESSAGE_TB_COL_NOM, 'LIKE');
     }
     try {
         $sth = $pdo->prepare($queryStr);
         $params = array();
         if (false !== $category_id) {
-            $params[COLON_CAR . PRODUCT_TB_COL_VILLE] = $category_id;
+            $params[COLON_CAR . MESSAGE_TB_COL_VILLE] = $category_id;
         }
         if (false !== $name) {
-            $params[COLON_CAR . PRODUCT_TB_COL_NOM] = '%' . $name . '%';
+            $params[COLON_CAR . MESSAGE_TB_COL_NOM] = '%' . $name . '%';
         }
         $res = $sth->execute($params);
 //        $sth->debugDumpParams();
