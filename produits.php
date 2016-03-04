@@ -38,7 +38,9 @@ require_once 'view_parts/_page_base.php';
 
                     }
                     ?>
+                    <div class="hover">
                     <h3>Bagues</h3>
+                    </div>
                 </div>
 
             </a>
@@ -80,7 +82,9 @@ require_once 'view_parts/_page_base.php';
                     }
 
                     ?>
-                    <h3>Pendentifs</h3>
+                    <div class="hover">
+                        <h3>Pendentifs</h3>
+                    </div>
                 </div>
             </a>
         </div>
@@ -114,7 +118,9 @@ require_once 'view_parts/_page_base.php';
 
                     }
                     ?>
-                    <h3>Boucles d'oreilles</h3>
+                    <div class="hover">
+                        <h3>Boucles d'oreilles</h3>
+                    </div>
                 </div>
             </a>
         </div>
@@ -144,7 +150,9 @@ require_once 'view_parts/_page_base.php';
 
                     }
                     ?>
-                    <h3>Bracelets</h3>
+                    <div class="hover">
+                        <h3>Bracelets</h3>
+                    </div>
                 </div>
             </a>
         </div>
