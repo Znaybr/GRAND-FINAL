@@ -9,7 +9,7 @@ $prenom_ok = false;
 $prenom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("prenom", $_POST)) {
     $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_STRING );
-    $prenom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $prenom));  // 1 siginifie que la condition est vraie et vérifiée
+    $prenom_ok = (1 === preg_match("/^[A-Za-z0-9 ]{2,}$/", $prenom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$prenom_ok){ // si prenom est non valide
         $prenom_message="Votre prénom doit être inscrit au complet";
     }
@@ -23,7 +23,7 @@ $nom_ok = false;
 $nom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("nom", $_POST)) {
     $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $nom_ok = (1 === preg_match("/^[A-Za-z0-9]{2,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
+    $nom_ok = (1 === preg_match("/^[A-Za-z0-9 ]{2,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$nom_ok){ // si nom est non valide
         $nom_message="Votre nom doit être inscrit au complet";
     }
@@ -66,7 +66,8 @@ if (array_key_exists("ville", $_POST)) {
         var_dump($ville_ok);*/
 
 //*****************************************************************************************************VALIDATION SEXE
-if (array_key_exists("genre", $_POST)) {
+$sexe = null;
+if (array_key_exists("genre", $_POST) && in_array($_POST["genre"], array('homme', 'femme'))) {
     $sexe = $_POST["genre"];
 }
 //var_dump($_POST["genre"]);
@@ -78,24 +79,23 @@ if (array_key_exists("pref", $_POST)) {
 //var_dump($_POST["pref"]);
 
 
-
 //*****************************************************************************************************VALIDATION MESSAGE
 $message_ok = false;
 $message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("text_message", $_POST)) {
-    $message = filter_input(INPUT_POST, "text_message", FILTER_SANITIZE_STRING );
-    $message_ok = (1 === preg_match("/^[A-Za-z0-9]{20,}$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
-    if(!$message_ok){ // si nom est non valide
-        $message_message="Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
+    $message = filter_input(INPUT_POST, "text_message", FILTER_SANITIZE_STRING);
+    $message_ok = (strlen($message) >= 20); //(1 === preg_match("/^([0-9a-zA-Z '\:\;\,\.\!\?\r\n-]{2,1000})$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
+    if (!$message_ok) { // si nom est non valide
+        $message_message = "Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
     }
-//    var_dump($message);
+//   var_dump($message);
 //    var_dump($message_ok);
 }
 
 
 
 
-//**************************************VALIDATION ET ENVOI**************************************************
+//**************************************VALIDATION ET ENVOI DANS LA BDD*************************************************
 if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok/*true*/){
     //on enregistre les données et s'en va sur une autres page
     require_once "db/P62_DBkitDem_messages.php";
@@ -192,6 +192,5 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok/*true*
 
                 <li><input type="submit" value="Envoyer" id="register" name="register"></li>
             </ul>
-            <?php if($in_post){ echo "<p>Merci de corriger les champs comportants un *.</p>"; } ?>
         </form>
     </fieldset>

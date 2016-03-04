@@ -182,7 +182,7 @@ ul{
 /*************************CONNECTION IN************************/
 /************************LISTE CONTACTS************************/
 #infos_admin > section:nth-of-type(2){
-    width: 60%;
+    width: 95%;
     margin: 0 auto 60px auto;
 }
 
@@ -194,7 +194,7 @@ table{
 
 tr, th, td{
     border: 1px solid #c4bdb7;
-    padding: 3px 6px;
+    padding: 4px 15px;
 }
 
 td:nth-of-type(-n+7),

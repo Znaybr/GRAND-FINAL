@@ -8,7 +8,6 @@
 require_once('P62_DBkitDem_conn.php');
 require_once('P62_DBkitDem_common.php');
 
-
 /**
  * Liste des colonnes de la table product
  */

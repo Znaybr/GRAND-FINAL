@@ -1,4 +1,12 @@
 <?php
+require_once '../db/P62_DBkitDem_conn.php';
+require_once '../_defines.php';
+require_once '../data/_main_data.php';
+
+define('UPLOAD_TARGET_DIR' ,"../images/"); // Répertoire des uploads d'images
+
+//var_dump($_FILES);
+//var_dump($_POST);
 
 $in_post=array_key_exists("addnew", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
@@ -32,7 +40,7 @@ $description = null;
 $warning_description = ""; //message de feedback en cas de champ erronné
 if (array_key_exists("description", $_POST)) {
     $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING );
-    $description_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $description));  // 1 siginifie que la condition est vraie et vérifiée
+    $description_ok = (1 === preg_match("/^[A-Za-z0-9 ]{4,}$/", $description));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$description_ok){ // si prenom est non valide
         $warning_description=" *";
     }
@@ -50,9 +58,55 @@ if (array_key_exists("materiaux", $_POST)) {
 }
 
 /***********************************Gérer le file upload***********************************/
-$illustration_ok = true;
-$illustration = '';
+$upload_valid = false;
+$illustration = null;
+if (array_key_exists('image_files', $_FILES)) {
+    $illustration = basename($_FILES["image_files"]["name"]); // Nom du fichier d'upload
+    var_dump($illustration);
+    $target_file = UPLOAD_TARGET_DIR . basename($_FILES["image_files"]["name"]);
 
+    $upload_valid = true; // Indique si le processus de upload est correcte
+    $upload_error_msg = ''; // Message d'erreur le cas échéant
+
+    // Vérification des fichiers uploadés : Sont-ce des images valides ?
+    if (isset($_POST["addnew"])) {
+        $check = getimagesize($_FILES["image_files"]["tmp_name"]);
+        $upload_valid = ($check !== false);
+        if (!$upload_valid) {
+            $upload_error_msg = 'Le fichier téléversé n\'est une images valide.';
+        }
+        //echo 'Le fichier téléversé est une images valide (' . $check["mime"] . ').';
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        $upload_error_msg .= '<br>Le fichier existe déjà.';
+        $upload_valid = false;
+    }
+
+
+    // Check file size
+    if ($_FILES["image_files"]["size"] > 500000) {
+        $upload_error_msg .= '<br>Le fichier trop gros : (La taille maximale est 500000 octets).';
+        $upload_valid = false;
+    }
+
+    // Allow certain file formats
+    $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        $upload_error_msg .= '<br>Le format de fichier est invalide : (JPG, JPEG, PNG & GIF uniquement).';
+        $upload_valid = false;
+    }
+
+    // Transfert du fichier
+    if (!move_uploaded_file($_FILES["image_files"]["tmp_name"], $target_file)) {
+        $upload_valid = false;
+    }
+
+}
+var_dump($nom_ok ,  $categorie_ok , $description_ok , $upload_valid , $materiaux_ok);
 
 if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_ok){
     //on enregistre les données sur la BD et redirection sur page index
@@ -111,10 +165,10 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
         <!--PARTIE - CREATION/AJOUT PRODUIT-->
         <section>
             <h2>Ajout d'une création</h2>
-            <form name="ajout" id="ajout" method="post" action="_upload.php">
+            <form id="ajout" method="post" enctype="multipart/form-data">
                 <ul>
                     <li>
-                        <input type="file" name="image_files" id="image_files" accept="image/*"
+                        <input type="file" name="image_files" id="image_files" accept="image/*" />
                     </li>
                     <li>
                         <ul>1 = bague</ul>
@@ -132,7 +186,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
                                value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
 
 
-<!--                <!--CATEGORIE-->-->
+<!--                <!--CATEGORIE-->
 <!--                    <label for="categorie">Catégorie <span>--><?php //echo $warning_categorie ?><!--</span></label>-->
 <!--                    <input type="text" id="categorie" name="categorie"-->
 <!--                            class="--><?php //echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?><!--"-->
@@ -173,6 +227,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
         <section>
             <h2>Liste de contacts</h2>
             <table>
+                <!--HEADER DU TABLEAU DE CONTACTS-->
                 <tr>
                     <th>Prénom</th>
                     <th>Nom</th>
@@ -183,26 +238,31 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
                     <th>Préférence</th>
                     <th>Message</th>
                 </tr>
-                <tr>
-                    <td>Prénom</td>
-                    <td>Nom</td>
-                    <td>Courriel</td>
-                    <td>Téléphone</td>
-                    <td>Ville</td>
-                    <td>Sexe</td>
-                    <td>Préférence</td>
-                    <td>Message</td>
-                </tr>
-                <tr>
-                    <td>Prénom</td>
-                    <td>Nom</td>
-                    <td>Courriel</td>
-                    <td>Téléphone</td>
-                    <td>Ville</td>
-                    <td>Sexe</td>
-                    <td>Préférence</td>
-                    <td>Message</td>
-                </tr>
+
+                <!--INTEGRATION DES INFOS DANS LE TABLEAU ADMIN CONTACTS-->
+                <?php
+                $query = "SELECT * FROM messages ORDER BY id DESC";
+
+                $results = $pdo->prepare($query);
+                $results->execute();
+
+                while ($row = $results->fetch(PDO::FETCH_ASSOC)){
+                    echo
+
+                    "<tr>".
+                        "<td>".$row["prenom"]."</td>".
+                        "<td>".$row["nom"]."</td>".
+                        "<td>".$row["courriel"]."</td>".
+                        "<td>".$row["telephone"]."</td>".
+                        "<td>".$row["ville"]."</td>".
+                        "<td>".$row["sexe"]."</td>".
+                        "<td>".$row["preference"]."</td>".
+                        "<td>".$row["message"]."</td>".
+                    "</tr>";
+                }
+
+                ?>
+
             </table>
 
         </section>
