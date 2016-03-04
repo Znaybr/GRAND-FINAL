@@ -5,8 +5,8 @@
 
 <div id="langage">
     <p>Langues</p>
-    <img src="../images/imagesweb/picto-fr.png" alt="drapeau de la France"/>
-    <img src="../images/imagesweb/picto-en.png" alt="drapeau de l'Angleterre"/>
+    <a href="../langage.php?lang=fr"><img  src="../images/imagesweb/picto-fr.png" alt="drapeau de la France"/></a>
+    <a href="../langage.php?lang=en"><img src="../images/imagesweb/picto-en.png" alt="drapeau de l'Angleterre"/></a>
 
 </div>
 <div id="menu">
