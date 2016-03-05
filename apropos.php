@@ -1,20 +1,32 @@
 <link rel = "stylesheet"  type="text/css"  href = "css/style.css" />
 <?php
+
+
+
 require_once '_defines.php';
 require_once 'common/start.php';
 require_once 'data/_main_data.php';
 $site_data[PAGE_ID] = 'dashboard';
 require_once 'view_parts/_page_base.php';
+var_dump($_SESSION["langage"]);
+
+$p1 = "Ma formation";
+
+$fr = array('Ma formation', 'J\'ai fait ma formation à l\'école des métiers du Sud-Ouest-de-Montréal.', 'J\'ai fait ma formation à l\'école des métiers du Sud-Ouest-de-Montréal.', 'J\'ai eu la chance de travailler avec des équipements à la fine pointe de la technologie et entourée de personnel qualifié et expérimenté.', 'Je remercie tout le corps proffesoral.');
+$en = array('My formation', 'I make my formation in  the school of métiers du Sud-Ouest-de-Montréal.', ';lkfjslfjnsèkdfsèdpfgjsdfègksbg', 'paosijhfoiashvaoisjhsaioguyaiga');
+
 ?>
 <div id="apropos">
  <fieldset>
     <legend>A propos</legend>
      <div id="ecole">
-         <h2>Mon école</h2>
-         <p>J'ai fait ma formation à l'école des métiers du Sud-Ouest-de-Montréal.</p>
-         <p>J'ai eu la chance de travailler avec des équipements à la fine pointe de la technologie et entourée de personnel qualifié et expérimenté.</p>
-         <p>Je remercie tout le corps proffesoral.</p>
+         <h2><?php echo $traduction['1']?></h2>
+         <h2 id="1"><?php// if($_SESSION["langage"] == "fr" ? $fr[0] : $en[1]); echo $p1 ?></h2>
+         <p id="2"></p>
+         <p></p>
+         <p></p>
      </div>
+     <p id="3">
          <div id="stage">
              <h2>Stage en Égypte</h2>
               <img src="images/stage1.jpg" alt="stage en égypte"/>

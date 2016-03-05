@@ -84,7 +84,7 @@ $message_ok = false;
 $message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("text_message", $_POST)) {
     $message = filter_input(INPUT_POST, "text_message", FILTER_SANITIZE_STRING );
-    $message_ok = (1 === preg_match("/^[A-Za-z0-9]{20,}$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
+    $message_ok = (1 === preg_match("/^[A-Za-z0-9]$/", $message));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$message_ok){ // si nom est non valide
         $message_message="Spécifiez un peu plus votre message, je pourrais vous répondre avec plus de précision";
     }

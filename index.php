@@ -14,25 +14,21 @@ require_once 'view_parts/_page_base.php';
     <!--IMAGE A LA UNE-->
     <section id="img_princ">
         <?php
-        $query = "SELECT * FROM produits  WHERE  id = 6";
+        $query = "SELECT * FROM produits ORDER BY id DESC ";
        // $query = "SELECT * FROM produits  WHERE  categorie = 2";
 
         $results = $pdo->prepare($query);
         $results->execute();
-
-        while ($row = $results->fetch(PDO::FETCH_ASSOC))
-        {
-            $row["id"];
-            echo
+        $donne = $results->fetch();
+                        echo
                 "<div id= 'image_index' >" .
-                    "<figure><img src='images/" .$row['illustration']."'></figure>".
+                    "<figure><img style='width: 700px;' src='images/" .$donne['illustration']."'></figure>".
                 "</div>".
                 "<div id='details'>".
                     "<p>Dernière réalisation</p>".
-                    "<h3>".$row['nom'] ."</h3>".
-                    "<figcaption>".$row['description'] ."</figcaption>".
+                    "<h3>".$donne['nom'] ."</h3>".
+                    "<figcaption>".$donne['description'] ."</figcaption>".
                 "</div>";
-        }
         ?>
 
     </section>
@@ -48,14 +44,24 @@ require_once 'view_parts/_page_base.php';
             <a href="?category_id=1">
                 <div id="cercle1" class="cercle">
                     <?php
+                    $nbIteration = 0;
+
                     $query = "SELECT * FROM produits  WHERE  categorie =1";
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-                    while ($row = $results->fetch(PDO::FETCH_ASSOC))
-                    {
-                        $row["id"];
+                    $results2 = $pdo->prepare($query);
+                    $results2->execute();
 
+                    while($savoirCombien = $results2->fetch())
+                        $nbIteration++;
+
+                    $randomPick = rand (1, $nbIteration);
+
+                    for($i = 0 ; $i <= $randomPick -1; $i++)
+                    {
+                        $row = $results->fetch(PDO::FETCH_ASSOC);
+                        $row["id"];
                         echo
                             "<style>"
                             . "#cercle1{
@@ -80,31 +86,25 @@ require_once 'view_parts/_page_base.php';
             <a href="?category_id=2">
                 <div id="cercle2" class="cercle">
                     <?php
+
+                    $nbIteration = 0;
+
                     $query = "SELECT * FROM produits  WHERE  categorie =2";
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-                    //initialiser tableau vide
+                    $results2 = $pdo->prepare($query);
+                    $results2->execute();
 
-                    while ($row = $results->fetch(PDO::FETCH_ASSOC))
+                    while($savoirCombien = $results2->fetch())
+                        $nbIteration++;
+
+                    $randomPick = rand (1, $nbIteration);
+
+                    for($i = 0 ; $i <= $randomPick -1; $i++)
                     {
-                        //ajouter valleur dans un tableau .push?
-                        //array.push($row['illustration'])
-                        //random avec comme limite array.lenght == nbrRandom
-                        //`fin while
-
-                        //echo
-        //                "<style>"
-        //                . "#cercle2{
-        //                    background-image:url("
-        //                ." '" ."images". "/".$array`[random]." ');
-        //                    background-size: cover;".
-        //                "}"
-        ////                ."</style>";
-
-
-                $row["id"];
-
+                        $row = $results->fetch(PDO::FETCH_ASSOC);
+                        $row["id"];
                         echo
                             "<style>"
                             . "#cercle2{
@@ -112,8 +112,9 @@ require_once 'view_parts/_page_base.php';
                             ." '" ."images". "/".$row['illustration']." ');
                             background-size: cover;".
                             "}"
-                         ."</style>";
+                            ."</style>";
                     }
+
 
                     ?>
 
@@ -130,14 +131,23 @@ require_once 'view_parts/_page_base.php';
             <a href="?category_id=3">
                 <div id="cercle3" class="cercle">
                     <?php
+                    $nbIteration = 0;
                     $query = "SELECT * FROM produits  WHERE  categorie =3";
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-                    while ($row = $results->fetch(PDO::FETCH_ASSOC))
-                    {
-                        $row["id"];
+                    $results2 = $pdo->prepare($query);
+                    $results2->execute();
 
+                    while($savoirCombien = $results2->fetch())
+                        $nbIteration++;
+
+                    $randomPick = rand (1, $nbIteration);
+
+                    for($i = 0 ; $i <= $randomPick -1; $i++)
+                    {
+                        $row = $results->fetch(PDO::FETCH_ASSOC);
+                        $row["id"];
                         echo
                             "<style>"
                             . "#cercle3{
@@ -162,17 +172,26 @@ require_once 'view_parts/_page_base.php';
             <a href="?category_id=4">
                 <div id="cercle4" class="cercle">
                     <?php
+
+                    $nbIteration = 0;
+
                     $query = "SELECT * FROM produits  WHERE  categorie =4";
 
                     $results = $pdo->prepare($query);
                     $results->execute();
-                    while ($row = $results->fetch(PDO::FETCH_ASSOC))
+                    $results2 = $pdo->prepare($query);
+                    $results2->execute();
+
+                    while($savoirCombien = $results2->fetch())
+                        $nbIteration++;
+
+                    $randomPick = rand (1, $nbIteration);
+
+                    for($i = 0 ; $i <= $randomPick -1; $i++)
                     {
+                        $row = $results->fetch(PDO::FETCH_ASSOC);
                         $row["id"];
-
-
                         echo
-
                             "<style>"
                             . "#cercle4{
                             background-image:url("
@@ -180,7 +199,6 @@ require_once 'view_parts/_page_base.php';
                             background-size: cover;".
                             "}"
                             ."</style>";
-
                     }
                     ?>
 

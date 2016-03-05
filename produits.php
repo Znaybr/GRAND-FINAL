@@ -157,8 +157,10 @@ require_once 'view_parts/_page_base.php';
             </a>
         </div>
     </div>
-    <img src="images/imagesweb/separation.png" alt="ligne de séparation" class="separ"/>
-    <div id="productdetail">
+    <div id="separation">
+    <img src="images/imagesweb/separation.png" alt="ligne de séparation"/>
+    </div>
+        <div id="productdetail">
         <?php
         $query = "SELECT * FROM produits ";
         if(array_key_exists("categorie",$_GET)){
@@ -186,10 +188,10 @@ require_once 'view_parts/_page_base.php';
 
                 "<h3>".$row["nom"]."</h3>".
 
-
+                "<p>".$row["materiaux"]."</p>".
 
                 "<figcaption>".$row["description"]."</figcaption>".
-                "<p>".$row["materiaux"]."</p>".
+
 
                 "</div>";
         }
