@@ -5,6 +5,7 @@ $in_post=array_key_exists("register", $_POST); // Savoir si le formulaire est en
 
 
 //*****************************************************************************************************VALIDATION PRENOM
+$prenom = null;
 $prenom_ok = false;
 $prenom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("prenom", $_POST)) {
@@ -19,6 +20,7 @@ if (array_key_exists("prenom", $_POST)) {
 }
 
 //*****************************************************************************************************VALIDATION NOM
+$nom = null;
 $nom_ok = false;
 $nom_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("nom", $_POST)) {
@@ -32,6 +34,7 @@ if (array_key_exists("nom", $_POST)) {
 }
 
 //*****************************************************************************************************VALIDATION COURRIEL
+$courriel = null;
 $courriel_ok = false;
 $courriel_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("courriel", $_POST)) {
@@ -46,6 +49,7 @@ if (array_key_exists("courriel", $_POST)) {
 }
 
 //*****************************************************************************************************VALIDATION TELEPHONE
+$telephone = null;
 $telephone_ok = false;
 $telephone_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("telephone", $_POST)) {
@@ -58,12 +62,15 @@ if (array_key_exists("telephone", $_POST)) {
         var_dump($telephone_ok);*/
 }
 
+
 //*****************************************************************************************************VALIDATION VILLE
+$ville = null;
 if (array_key_exists("ville", $_POST)) {
     $ville = filter_input(INPUT_POST, "ville", FILTER_SANITIZE_STRING);
 }
     /*    var_dump($ville);
         var_dump($ville_ok);*/
+
 
 //*****************************************************************************************************VALIDATION SEXE
 $sexe = null;
@@ -72,7 +79,9 @@ if (array_key_exists("genre", $_POST) && in_array($_POST["genre"], array('homme'
 }
 //var_dump($_POST["genre"]);
 
+
 //*****************************************************************************************************VALIDATION PREFERENCE
+$preference = null;
 if (array_key_exists("pref", $_POST)) {
     $preference = $_POST["pref"];
 }
@@ -80,6 +89,7 @@ if (array_key_exists("pref", $_POST)) {
 
 
 //*****************************************************************************************************VALIDATION MESSAGE
+$message = null;
 $message_ok = false;
 $message_message = ""; //message de feedback en cas de champ erronné, affiché si non vide
 if (array_key_exists("text_message", $_POST)) {
@@ -105,7 +115,6 @@ if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok/*true*
    exit;
 }
 ?>
-
 
     <fieldset>
         <legend>Contactez-nous</legend>

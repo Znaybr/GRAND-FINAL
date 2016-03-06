@@ -39,34 +39,40 @@ ul{
     height: 150px;
     margin-top: 15px;
 }
+
+/*Image du logo*/
 #header > img {
-    margin: 0 20px 20px 40px;
+    margin: 0 20px 0 40px;
     float: left;
-    width: 10%
+    width: 150px;
+}
+
+#menu_BTNS {
+    display: inline-block;
+    width: 75%;
 }
 
 #langage {
-    display: inline-block;
-    width: 10%;
-    height: 25px;
-    margin-left: 65%;
     vertical-align: top;
     text-align: right;
+    width: 100%;
 }
 
-#langage p {
+#langage > p {
     display: inline-block;
     font-weight: lighter;
     color: #c4bdb7;
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 8px;
     font-size: 14px;
 }
 
-#langage img {
-    display: inline;
-    width:15%;
-    right: 0;
+#langage a{
+    display: inline-block;
+}
+
+#langage img{
+    width: 30px;
 }
 
 #menu {
@@ -74,7 +80,7 @@ ul{
     border-top: 1px solid #8bd3e0;
     height: 25px;
     display: inline-block;
-    width: 75%;
+    width: 100%;
     margin-top: 15px;
     padding: 8px;
 }
@@ -173,31 +179,39 @@ ul{
 /***********************************************************************************************/
 #main {
     text-align: center;
-    margin-top: -3%;
 }
 
 /*Image principale derniere creation*/
 #img_princ {
-    text-align: left;
-    height: 400px;
+    margin: 0 auto;
+    width: 90%;
+    overflow: hidden;
     position: relative;
+    text-align: center;
 }
 
-#image_index {
+#img_princ figure{
+    width: 50%;
+    overflow: hidden;
     display: inline-block;
-    vertical-align: top;
-    width: 36%;
-    /*margin-left: 10%;*/
+}
+
+#img_princ figure img{
+    width:100%;
 }
 
 
 /*Informations derniere creation*/
 #details {
+    padding: 11px;
     display: inline-block;
-    width: 20%;
     vertical-align: top;
-    margin-top: 250px;
-    margin-left: 40px;
+    text-align: left;
+    position: absolute;
+    top: 40%;
+    right: 15%;
+    border-radius: 2px;
+    background-color: rgba(255,255,255,0.5);
 }
 #details p {
     display: inline-block;
@@ -219,7 +233,7 @@ ul{
 /*BTNS_CATEGORIES PRINCIPALES*/
 #categorie {
     width: 80%;
-    margin: 170px auto;
+    margin: 0 auto;
     text-align: center;
 }
 #categorie > div {

@@ -24,14 +24,14 @@ require_once 'view_parts/_page_base.php';
         {
             $row["id"];
             echo
-                "<div id= 'image_index' >" .
-                    "<figure><img src='images/" .$row['illustration']."'></figure>".
-                "</div>".
-                "<div id='details'>".
+                "<figure>" .
+                    "<img src='images/" .$row['illustration']."'>".
+                    "<div id='details'>".
                     "<p>Dernière réalisation</p>".
                     "<h3>".$row['nom'] ."</h3>".
                     "<figcaption>".$row['description'] ."</figcaption>".
-                "</div>";
+                    "</div>".
+                "</figure>";
         }
         ?>
 

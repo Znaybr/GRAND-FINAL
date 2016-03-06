@@ -13,6 +13,8 @@ $in_post=array_key_exists("addnew", $_POST); // Savoir si le formulaire est en s
 
 //var_dump($_POST);
 
+
+//NOM DU PRODUIT
 $nom_ok = false;
 $nom = null;
 $warning_nom = ""; //message de feedback en cas de champ erronné
@@ -24,6 +26,7 @@ if (array_key_exists("nom", $_POST)) {
     }
 }
 
+//CATEGORIE DU PRODUIT
 $categorie_ok = false;
 $categorie = null;
 $warning_categorie = ""; //message de feedback en cas de champ erronné
@@ -35,6 +38,8 @@ if (array_key_exists("categorie", $_POST)) {
     }
 }
 
+//DESCRIPTION DU PRODUIT
+//V_FRANCAIS
 $description_ok = false;
 $description = null;
 $warning_description = ""; //message de feedback en cas de champ erronné
@@ -45,7 +50,20 @@ if (array_key_exists("description", $_POST)) {
         $warning_description=" *";
     }
 }
+//V_ANGLAIS
+$description_en_ok = false;
+$description_en = null;
+$warning_description_en = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("description_en", $_POST)) {
+    $description_en = filter_input(INPUT_POST, "description_en", FILTER_SANITIZE_STRING );
+    $description_en_ok = (1 === preg_match("/^[A-Za-z0-9 ]{4,}$/", $description_en));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$description_ok){ // si prenom est non valide
+        $warning_description_en=" *";
+    }
+}
 
+//MATIERES DU PRODUIT
+//V_FRANCAIS
 $materiaux_ok = false;
 $materiaux = null;
 $warning_materiaux = ""; //message de feedback en cas de champ erronné
@@ -56,13 +74,25 @@ if (array_key_exists("materiaux", $_POST)) {
         $warning_materiaux=" *";
     }
 }
+//V_ANGLAIS
+$materiaux_en_ok = false;
+$materiaux_en = null;
+$warning_materiaux_en = ""; //message de feedback en cas de champ erronné
+if (array_key_exists("materiaux_en", $_POST)) {
+    $materiaux_en = filter_input(INPUT_POST, "materiaux_en", FILTER_SANITIZE_STRING );
+    $materiaux_en_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $materiaux_en));  // 1 siginifie que la condition est vraie et vérifiée
+    if(!$materiaux_en_ok){ // si prenom est non valide
+        $warning_materiaux_en=" *";
+    }
+}
+
 
 /***********************************Gérer le file upload***********************************/
 $upload_valid = false;
-$illustration = null;
+$image = null;
 if (array_key_exists('image_files', $_FILES)) {
-    $illustration = basename($_FILES["image_files"]["name"]); // Nom du fichier d'upload
-    var_dump($illustration);
+    $image = basename($_FILES["image_files"]["name"]); // Nom du fichier d'upload
+    var_dump($image);
     $target_file = UPLOAD_TARGET_DIR . basename($_FILES["image_files"]["name"]);
 
     $upload_valid = true; // Indique si le processus de upload est correcte
@@ -106,12 +136,12 @@ if (array_key_exists('image_files', $_FILES)) {
     }
 
 }
-var_dump($nom_ok ,  $categorie_ok , $description_ok , $upload_valid , $materiaux_ok);
+//var_dump($nom_ok, $categorie_ok, $description_ok, $upload_valid, $materiaux_ok);
 
-if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_ok){
+if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload_valid && $materiaux_ok && $materiaux_en_ok){
     //on enregistre les données sur la BD et redirection sur page index
     require_once "../db/P62_DBkitDem_product.php";
-    $produit_info = product_add($nom, $description, $illustration, $categorie, $materiaux);
+    $produit_info = product_add($nom, $description, $image, $categorie, $materiaux, $description_en_ok, $description_en_ok );
     header("Location: admin.php");
     exit;
 }
@@ -167,32 +197,19 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
             <h2>Ajout d'une création</h2>
             <form id="ajout" method="post" enctype="multipart/form-data">
                 <ul>
+
+                    <!--DOWNLOAD IMAGE-->
                     <li>
                         <input type="file" name="image_files" id="image_files" accept="image/*" />
                     </li>
-                    <li>
-                        <ul>1 = bague</ul>
-                        <ul>2 = collier</ul>
-                        <ul>3 = boucle</ul>
-                        <ul>4 = bracelet</ul>
-                    </li>
 
+                    <!--INFOS SUR LE PRODUIT-->
                     <li>
-
                     <!--NOM-->
                         <label for="nom">Nom <span><?php echo $warning_nom ?></span></label>
                         <input type="text" id="nom" name="nom"
                                class="<?php echo $in_post && ! $nom_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('nom', $_POST) ? $_POST['nom']: ''?>"/>
-
-
-<!--                <!--CATEGORIE-->
-<!--                    <label for="categorie">Catégorie <span>--><?php //echo $warning_categorie ?><!--</span></label>-->
-<!--                    <input type="text" id="categorie" name="categorie"-->
-<!--                            class="--><?php //echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?><!--"-->
-<!--                            value="--><?php //echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?><!--"/>-->
-
-
 
                     <!--CATEGORIE-->
                         <label for="categorie">Catégorie <span><?php echo $warning_categorie ?></span></label>
@@ -200,17 +217,33 @@ if ($nom_ok && $categorie_ok && $description_ok && $upload_valid && $materiaux_o
                                class="<?php echo $in_post && ! $categorie_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('categorie', $_POST) ? $_POST['categorie']: ''?>"/>
 
+                        <div><p>1 = bague</p><p>2 = collier</p><p>3 = boucle</p><p>4 = bracelet</p></div>
+
+
                     <!--DESCRIPTION-->
                         <label for="description">Description <span><?php echo $warning_description ?></label>
                         <input type="text" id="description" name="description"
                                class="<?php echo $in_post && ! $description_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('description', $_POST) ? $_POST['description']: ''?>"/>
 
+                    <!--DESCRIPTION_EN-->
+                        <label for="description_en">Description (En) <span><?php echo $warning_description_en ?></label>
+                        <input type="text" id="description_en" name="description_en"
+                               class="<?php echo $in_post && ! $description_en_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('description_en', $_POST) ? $_POST['description_en']: ''?>"/
+
+
                     <!--MATERIAUX-->
                         <label for="materiaux">Matériaux <span><?php echo $warning_materiaux ?></label>
                         <input type="text" id="materiaux" name="materiaux"
                                class="<?php echo $in_post && ! $materiaux_ok ? 'erreur' : ''; ?>"
                                value="<?php echo array_key_exists('materiaux', $_POST) ? $_POST['materiaux']: ''?>"/>
+
+                    <!--MATERIAUX_EN-->
+                        <label for="materiaux_en">Matériaux (En) <span><?php echo $warning_materiaux_en ?></label>
+                        <input type="text" id="materiaux_en" name="materiaux_en"
+                               class="<?php echo $in_post && ! $materiaux_en_ok ? 'erreur' : ''; ?>"
+                               value="<?php echo array_key_exists('materiaux_en', $_POST) ? $_POST['materiaux_en']: ''?>"/>
 
                         <input type="submit" id="addnew" name="addnew">
 
