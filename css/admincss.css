@@ -247,12 +247,9 @@ tr:nth-of-type(even){
     th:nth-of-type(6), td:nth-of-type(6),
     th:nth-of-type(7), td:nth-of-type(7),
     th:nth-of-type(8), td:nth-of-type(8) {
-
         display: none;
     }
-
 }
-
 
 
 /***************************************************/

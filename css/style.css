@@ -297,6 +297,7 @@ ul{
 }
 
 #apropos p, #repar p {
+    text-align: justify;
     margin-top: 8px;
     margin-bottom: 8px;
 }
@@ -324,11 +325,9 @@ fieldset div p {
     color: #c4bdb7;
 }
 fieldset>div img {
-    display: inline-block;
     width: 33%;
     margin-top: 10px;
     vertical-align: top;
-    height: 200px;
 }
 
 
@@ -422,7 +421,7 @@ h1 {
 #form_contact input:nth-of-type(-n+8){
     padding: 4px;
     margin: 4px;
-    width: 76%;
+    width: 70%;
     border: 1px solid #c4bdb7;
     box-shadow: 0 0 1px #c4bdb7 inset;
 }
@@ -446,7 +445,7 @@ h1 {
 }
 
 #form_contact textarea{
-    width: 76%;
+    width: 70%;
     height: 150px;
     padding: 4px;
     margin: 4px;
@@ -457,7 +456,7 @@ h1 {
 #form_contact input[type="submit"] {
     margin: 8px 0 20px 0;
     padding: 4px;
-    width: 97%;
+    width: 100%;
     background-color: #41676e;
     border: 1px solid #c4bdb7;
     color: white;
@@ -609,6 +608,70 @@ h1 {
         background-color: rgba(255,255,255,0.5);
     }
 
+    /*PAGE CONTACTS 960px*/
+
+    #apropos, #repar, #contact_page {
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    #contact_page #form_contact{
+        margin: 15px auto;
+        width: 70%;
+    }
+
+    #form_contact label{
+        display: inline-block;
+        width: 90px;
+        color: #6e6960;
+        text-align: left;
+    }
+
+    #form_contact input:nth-of-type(-n+8){
+        padding: 4px;
+        margin: 4px;
+        width: 67%;
+        border: 1px solid #c4bdb7;
+        box-shadow: 0 0 1px #c4bdb7 inset;
+    }
+
+    #form_contact #genre{
+        display: inline-block;
+        margin-left: 4px;
+    }
+    #form_contact #genre label{
+        display: inline-block;
+        font-size: 12px;
+        width: 40px;
+    }
+    #form_contact #genre input{
+        display: inline-block;
+        width: 20px;
+        margin-right: 50px;
+    }
+
+    #form_contact #label_message{
+        vertical-align: top;
+    }
+
+    #form_contact textarea{
+        width: 67%;
+        height: 150px;
+        padding: 4px;
+        margin: 4px;
+        border: 1px solid #c4bdb7;
+        box-shadow: 0 0 1px #c4bdb7 inset;
+    }
+
+    #form_contact input[type="submit"] {
+        margin: 8px 0 20px 0;
+        padding: 4px;
+        width: 100%;
+        background-color: #41676e;
+        border: 1px solid #c4bdb7;
+        color: white;
+    }
 
 }
 
@@ -802,6 +865,73 @@ h1 {
         color: #6e6960;
         font-size: 10px;
     }
+
+    /*PAGE CONTACTS 640px*/
+    #apropos, #repar, #contact_page {
+        width: 80%;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+
+    #contact_page #form_contact{
+        margin: 15px auto;
+        width: 90%;
+    }
+
+    #form_contact label{
+        display: inline-block;
+        width: 68px;
+        color: #6e6960;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    #form_contact input:nth-of-type(-n+8){
+        padding: 4px;
+        margin: 4px;
+        width: 68%;
+        border: 1px solid #c4bdb7;
+        box-shadow: 0 0 1px #c4bdb7 inset;
+    }
+
+    #form_contact #genre{
+        display: inline-block;
+        margin-left: 4px;
+    }
+    #form_contact #genre label{
+        display: inline-block;
+        font-size: 12px;
+        width: 40px;
+    }
+    #form_contact #genre input{
+        display: inline-block;
+        width: 20px;
+        margin-right: 20px;
+    }
+
+    #form_contact #label_message{
+        vertical-align: top;
+    }
+
+    #form_contact textarea{
+        width: 67%;
+        height: 150px;
+        padding: 4px;
+        margin: 4px;
+        border: 1px solid #c4bdb7;
+        box-shadow: 0 0 1px #c4bdb7 inset;
+    }
+
+    #form_contact input[type="submit"] {
+        margin: 8px 0 20px 0;
+        padding: 4px;
+        width: 100%;
+        background-color: #41676e;
+        border: 1px solid #c4bdb7;
+        color: white;
+    }
+
 
 
 }

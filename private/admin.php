@@ -20,7 +20,7 @@ $nom = null;
 $warning_nom = ""; //message de feedback en cas de champ erronné
 if (array_key_exists("nom", $_POST)) {
     $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_STRING );
-    $nom_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
+    $nom_ok = (1 === preg_match("/^[A-Za-z0-9 ]{4,}$/", $nom));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$nom_ok){ // si prenom est non valide
         $warning_nom=" *";
     }
@@ -69,7 +69,7 @@ $materiaux = null;
 $warning_materiaux = ""; //message de feedback en cas de champ erronné
 if (array_key_exists("materiaux", $_POST)) {
     $materiaux = filter_input(INPUT_POST, "materiaux", FILTER_SANITIZE_STRING );
-    $materiaux_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $materiaux));  // 1 siginifie que la condition est vraie et vérifiée
+    $materiaux_ok = (1 === preg_match("/^[A-Za-z0-9 ]{4,}$/", $materiaux));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$materiaux_ok){ // si prenom est non valide
         $warning_materiaux=" *";
     }
@@ -80,7 +80,7 @@ $materiaux_en = null;
 $warning_materiaux_en = ""; //message de feedback en cas de champ erronné
 if (array_key_exists("materiaux_en", $_POST)) {
     $materiaux_en = filter_input(INPUT_POST, "materiaux_en", FILTER_SANITIZE_STRING );
-    $materiaux_en_ok = (1 === preg_match("/^[A-Za-z0-9]{4,}$/", $materiaux_en));  // 1 siginifie que la condition est vraie et vérifiée
+    $materiaux_en_ok = (1 === preg_match("/^[A-Za-z0-9 ]{4,}$/", $materiaux_en));  // 1 siginifie que la condition est vraie et vérifiée
     if(!$materiaux_en_ok){ // si prenom est non valide
         $warning_materiaux_en=" *";
     }
@@ -136,12 +136,12 @@ if (array_key_exists('image_files', $_FILES)) {
     }
 
 }
-//var_dump($nom_ok, $categorie_ok, $description_ok, $upload_valid, $materiaux_ok);
+var_dump($nom_ok, $categorie_ok, $description_ok, $description_en_ok, $upload_valid, $materiaux_ok, $materiaux_en_ok);
 
 if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload_valid && $materiaux_ok && $materiaux_en_ok){
     //on enregistre les données sur la BD et redirection sur page index
     require_once "../db/P62_DBkitDem_product.php";
-    $produit_info = product_add($nom, $description, $image, $categorie, $materiaux, $description_en_ok, $description_en_ok );
+    $produit_info = product_add($nom, $description, $description_en, $image, $categorie, $materiaux, $materiaux_en);
     header("Location: admin.php");
     exit;
 }
@@ -198,6 +198,18 @@ if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload
         <!--PARTIE - CREATION/AJOUT PRODUIT-->
         <section>
             <h2>Ajout d'une création</h2>
+
+<!--            MESSAGE DE RETOUR SUR L'ENVOI-->
+            <?php
+            if ($upload_valid) {
+                echo '<p>Le fichier '. basename( $_FILES["image_files"]["name"]). ' a été téléversé avec succès.</p>';
+                echo '<img src="uploaded_files/' . $_FILES["image_files"]["name"] . '" title="uploaded images" />';
+            } else {
+                echo '<p>Le fichier n\'a pas été téléchargé.</p>';
+                echo "<p>$error_msg</p>";
+            }
+            ?>
+
             <form id="ajout" method="post" enctype="multipart/form-data">
                 <ul>
 
