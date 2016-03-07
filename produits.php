@@ -1,4 +1,4 @@
-<link rel = "stylesheet"  type="text/css"  href = "css/style.css" />
+
 <?php
 require_once 'db/P62_DBkitDem_conn.php';
 require_once '_defines.php';
