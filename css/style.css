@@ -319,16 +319,30 @@ legend {
     font-family: 'lavanderia_regular';
 }
 fieldset div h2 {
+    text-align: left;
     color: #41676e;
 }
 fieldset div p {
     color: #c4bdb7;
 }
-fieldset>div img {
-    width: 33%;
-    margin-top: 10px;
+
+fieldset > div > div{
+    text-align: center;
+}
+
+#stage{
+    text-align: center;
+}
+
+fieldset > div > div > img,
+#stage img{
+    box-sizing: border-box;
+    width: 32%;
+    margin: 10px auto;
     vertical-align: top;
 }
+
+
 
 
 /***********************************************************************************************/
@@ -673,6 +687,15 @@ h1 {
         color: white;
     }
 
+    /*REPARATIONS 960px - A PROPOS 960px*/
+    fieldset div h2 {
+        font-size: 18px;
+        color: #41676e;
+    }
+    fieldset div p {
+        font-size: 14px;
+        color: #c4bdb7;
+    }
 }
 
 
