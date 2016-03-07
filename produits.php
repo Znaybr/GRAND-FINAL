@@ -36,7 +36,7 @@ if ($_SESSION["langage"] == 'en') {
                             "<style>"
                             . "#cercle1{
                     background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                     background-size: cover;
                     background-position:center;".
                             "}"
@@ -76,7 +76,7 @@ if ($_SESSION["langage"] == 'en') {
                             "<style>"
                             . "#cercle2{
                     background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                     background-size: cover;
                     background-position:center;".
                             "}"
@@ -113,7 +113,7 @@ if ($_SESSION["langage"] == 'en') {
                             "<style>"
                             . "#cercle3{
                     background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                     background-size: cover;
                     background-position:center;".
                             "}"
@@ -149,7 +149,7 @@ if ($_SESSION["langage"] == 'en') {
                             "<style>"
                             . "#cercle4{
                     background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                     background-size: cover;
                     background-position:center;".
                             "}"
@@ -181,16 +181,11 @@ if ($_SESSION["langage"] == 'en') {
             echo
 
 
-            "<div class='photo' style='background-image:url(" ."images". "/".$row['illustration'].");
+            "<div class='photo' style='background-image:url(" ."images". "/".$row['image'].");
              background-position:center;
              background-size:cover;
              background-repeat:no-repeat;
             '>".
-
-
-
-
-
 
 
                 "<h3>".$row["nom"]."</h3>".
