@@ -22,7 +22,7 @@ require_once 'view_parts/_page_base.php';
         $donne = $results->fetch();
             echo
                 "<figure>".
-                    "<img style='width: 700px;' src='images/" .$donne['illustration']."'>".
+                    "<img style='width: 700px;' src='images/" .$donne['image']."'>".
                     "<div id='details'>".
                         "<p>Dernière réalisation</p>".
                         "<h3>".$donne['nom'] ."</h3>".
