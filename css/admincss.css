@@ -153,7 +153,7 @@ ul{
     padding: 4px;
     margin: 1px 0;
     display: inline-block;
-    width: 71%;
+    width: 69%;
     box-sizing: border-box;
 }
 
@@ -210,4 +210,71 @@ tr:nth-of-type(odd){
 
 tr:nth-of-type(even){
     background-color: #e6e6e6;
+}
+
+/***************************************************/
+/****************RESPONSIVE TABLETTE****************/
+/***************************************************/
+@media only screen and (max-width:960px) {
+
+    #infos_admin > section{
+        width: 60%;
+        margin: 0 auto 60px auto;
+    }
+
+    #ajout li:nth-of-type(2) label{
+        display: inline-block;
+        width: 28%;
+        text-align: left;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    #infos_admin li:nth-of-type(2) > div > p{
+        width: calc((100% - 5%) / 4);
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 10px;
+        color: #c4bdb7;
+        margin: 0 2px 0 2px;
+    }
+
+    td, th{
+        font-size: 14px;
+    }
+
+    th:nth-of-type(5), td:nth-of-type(5),
+    th:nth-of-type(6), td:nth-of-type(6),
+    th:nth-of-type(7), td:nth-of-type(7),
+    th:nth-of-type(8), td:nth-of-type(8) {
+
+        display: none;
+    }
+
+}
+
+
+
+/***************************************************/
+/*****************RESPONSIVE MOBILE*****************/
+/***************************************************/
+@media only screen and (max-width:640px) {
+
+    #infos_admin > section{
+        width: 90%;
+        margin: 0 auto 60px auto;
+    }
+
+    td, th{
+        font-size: 12px;
+    }
+
+    th:nth-of-type(2), td:nth-of-type(2),
+    th:nth-of-type(5), td:nth-of-type(5),
+    th:nth-of-type(6), td:nth-of-type(6),
+    th:nth-of-type(7), td:nth-of-type(7),
+    th:nth-of-type(8), td:nth-of-type(8) {
+        display: none;
+    }
+
 }

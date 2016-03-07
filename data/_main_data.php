@@ -10,5 +10,5 @@ $site_data[MAIN_MENU] = array(
     'Créations'=> 'produits.php',
     'Contact' => 'contact.php',
     'À propos' => 'apropos.php',
-    'Reparations' => 'reparation.php',
+    'Réparations' => 'reparation.php',
 );

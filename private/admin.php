@@ -163,6 +163,9 @@ if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload
     <meta charset="UTF-8">
     <title>Ma partie administration - CONNECTÉE</title>
 
+    <!--RESPONSIVE-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="../css/admincss.css">
     <link href='https://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>

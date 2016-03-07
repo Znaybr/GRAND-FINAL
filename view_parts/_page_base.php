@@ -29,6 +29,9 @@ if(!isset($_SESSION))
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="index.php"/>
 
+        <!--RESPONSIVE-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <!--/****VERSIONS ANTERIEURES IE9****/-->
         <!--<link rel="stylesheet" href="css/fixe.css"/>-->
         <!--[if lt IE 9]>
