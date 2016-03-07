@@ -7,8 +7,8 @@ require_once 'data/_main_data.php';
 $site_data[PAGE_ID] = 'index';
 require_once 'view_parts/_page_base.php';
 
-$prodfr = array("Les plus belles créations d'Élise", "materiaux", "description", "", "",);
-$proden = array("The most beautiful creations of Elise", "materiaux_en", "description_en", "", "",);
+$prodfr = array("Les plus belles créations d'Élise", "materiaux", "description", "Bagues", "Pendentifs", "Boucles d'oreilles", "", );
+$proden = array("The most beautiful creations of Elise", "materiaux_en", "description_en", "Rings", "Necklaces", "Earrings", "", "",);
 
 if ($_SESSION["langage"] == 'en') {
     $prodfr = $proden;
@@ -41,7 +41,7 @@ if ($_SESSION["langage"] == 'en') {
                     }
                     ?>
                     <div class="hover">
-                    <h3>Bagues</h3>
+                    <h3><?php echo $prodfr['3']?></h3>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@ if ($_SESSION["langage"] == 'en') {
 
                     ?>
                     <div class="hover">
-                        <h3>Pendentifs</h3>
+                        <h3><?php echo $prodfr['4']?></h3>
                     </div>
                 </div>
             </a>
@@ -103,7 +103,7 @@ if ($_SESSION["langage"] == 'en') {
                     }
                     ?>
                     <div class="hover">
-                        <h3>Boucles d'oreilles</h3>
+                        <h3><?php echo $prodfr['5']?></h3>
                     </div>
                 </div>
             </a>
