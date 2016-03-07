@@ -405,7 +405,7 @@ h1 {
 }
 #productclas {
     display: inline-block;
-    width: 10%;
+    width: 14%;
     vertical-align: top;
 }
 
@@ -761,6 +761,49 @@ h1 {
         font-size: 14px;
         color: #c4bdb7;
     }
+
+
+    /*PAGE PRODUITS 960px*/
+
+    #productclas {
+        display: inline-block;
+        width: 20%;
+        vertical-align: top;
+    }
+
+    #productdetail {
+        display: inline-block;
+        width: 70%;
+        margin-left: 2%;
+        text-align: center;
+    }
+
+    #productdetail h3 {
+        color: #41676e;
+        margin-top: 10px;
+        font-family: 'lavanderia_regular';
+        font-size: 20px;
+        text-shadow: 0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
+    }
+
+    #productdetail p {
+        margin-top: -5px;
+        color: #6e6960;
+        font-size: 14px;
+        text-shadow: 0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
+    }
+
+    .photo {
+        display: inline-block;
+        width: calc(100% / 2);
+        height: 300px;
+        vertical-align: top;
+    }
+
 }
 
 
@@ -1019,6 +1062,67 @@ h1 {
         border: 1px solid #c4bdb7;
         color: white;
     }
+
+
+    /*PAGE PRODUITS 640px*/
+
+    #productclas {
+        text-align: center;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    #productclas>div {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #separation {
+        display: none;
+    }
+
+    .cercle2 {
+        border-radius: 50%;
+        box-shadow: 0 0 15px #8bd3e0;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    #productclas>div {
+        display: inline-block;
+        width: 60px;
+        vertical-align: top;
+        margin: 10px;
+    }
+
+    .cercle2 .hover {
+        text-align: center;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0,0,0,0.2);
+        display: inline-block;
+        opacity: 0;
+    }
+
+    #productdetail {
+        display: inline-block;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    #productclas h3 {
+        margin: 20px auto 0 auto;
+        vertical-align: middle;
+        color: white;
+        font-size: 10px;
+    }
+
+
+
+
+
 
 
 

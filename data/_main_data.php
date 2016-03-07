@@ -11,7 +11,6 @@ if ($_SESSION["langage"] == 'en') {
     $menufr = $menuen;
 }
 
-
 $site_data[MAIN_MENU] = array(
      $menufr['0'] => 'index.php',
     $menufr['1']=> 'produits.php',

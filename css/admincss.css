@@ -95,11 +95,9 @@ ul{
 
 /*Masque des boites d'infos et d'administration*/
 /*APPARITION AU LOGIN*/
-/*#infos_admin{*/
-    /*display: none;*/
-/*}*/
-
-
+#infos_admin{
+    display: none;
+}
 
 #infos_admin > img{
     display: block;
