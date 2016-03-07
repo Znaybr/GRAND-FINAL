@@ -25,7 +25,7 @@ require_once 'view_parts/_page_base.php';
             $row["id"];
             echo
                 "<figure>" .
-                    "<img src='images/" .$row['illustration']."'>".
+                    "<img src='images/" .$row['image']."'>".
                     "<div id='details'>".
                     "<p>Dernière réalisation</p>".
                     "<h3>".$row['nom'] ."</h3>".
@@ -60,7 +60,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle1{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
@@ -109,7 +109,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle2{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                          ."</style>";
@@ -142,7 +142,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle3{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
@@ -176,7 +176,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle4{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";

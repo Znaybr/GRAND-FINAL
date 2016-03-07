@@ -89,14 +89,14 @@ if (array_key_exists("materiaux_en", $_POST)) {
 
 /***********************************Gérer le file upload***********************************/
 $upload_valid = false;
+$upload_error_msg = ''; // Message d'erreur le cas échéant
 $image = null;
 if (array_key_exists('image_files', $_FILES)) {
     $image = basename($_FILES["image_files"]["name"]); // Nom du fichier d'upload
-    var_dump($image);
+//    var_dump($image);
     $target_file = UPLOAD_TARGET_DIR . basename($_FILES["image_files"]["name"]);
 
     $upload_valid = true; // Indique si le processus de upload est correcte
-    $upload_error_msg = ''; // Message d'erreur le cas échéant
 
     // Vérification des fichiers uploadés : Sont-ce des images valides ?
     if (isset($_POST["addnew"])) {
@@ -136,7 +136,7 @@ if (array_key_exists('image_files', $_FILES)) {
     }
 
 }
-var_dump($nom_ok, $categorie_ok, $description_ok, $description_en_ok, $upload_valid, $materiaux_ok, $materiaux_en_ok);
+//var_dump($nom_ok, $categorie_ok, $description_ok, $description_en_ok, $upload_valid, $materiaux_ok, $materiaux_en_ok);
 
 if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload_valid && $materiaux_ok && $materiaux_en_ok){
     //on enregistre les données sur la BD et redirection sur page index
@@ -206,7 +206,7 @@ if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload
                 echo '<img src="uploaded_files/' . $_FILES["image_files"]["name"] . '" title="uploaded images" />';
             } else {
                 echo '<p>Le fichier n\'a pas été téléchargé.</p>';
-                echo "<p>$error_msg</p>";
+                echo "<p>$upload_error_msg</p>";
             }
             ?>
 

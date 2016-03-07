@@ -53,9 +53,9 @@ function message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $prefe
         COLON_CAR . MESSAGE_TB_COL_MESSAGE => $message,
     );
     $res = $sth->execute($params);
-    $sth->debugDumpParams();
-    var_dump($params);
-    var_dump($res);
+//    $sth->debugDumpParams();
+//    var_dump($params);
+//    var_dump($res);
     if ( ! $res || ($sth->rowCount()  == 0)) {
         throw new Exception("Echec lors de la tentative d'ajout du message $nom : (" . $sth->errorInfo()[0] . ")<br/>");
     }
