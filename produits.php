@@ -7,8 +7,8 @@ require_once 'data/_main_data.php';
 $site_data[PAGE_ID] = 'index';
 require_once 'view_parts/_page_base.php';
 
-$prodfr = array("Les plus belles créations d'Élise", "", "", "", "",);
-$proden = array("The most beautiful creations of Elise", "", "", "", "",);
+$prodfr = array("Les plus belles créations d'Élise", "materiaux", "description", "", "",);
+$proden = array("The most beautiful creations of Elise", "materiaux_en", "description_en", "", "",);
 
 if ($_SESSION["langage"] == 'en') {
     $prodfr = $proden;
@@ -190,9 +190,9 @@ if ($_SESSION["langage"] == 'en') {
 
                 "<h3>".$row["nom"]."</h3>".
 
-                "<p>".$row["materiaux"]."</p>".
+                "<p>".$row[$prodfr['1']]."</p>".
 
-                "<figcaption>".$row["description"]."</figcaption>".
+                "<figcaption>".$row[$prodfr['2']]."</figcaption>".
 
 
                 "</div>";

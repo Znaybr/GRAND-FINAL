@@ -7,6 +7,12 @@ $site_data[PAGE_ID] = 'index';
 require_once 'view_parts/_page_base.php';
 
 
+$indfr = array("Dernière réalisation", "description", "Bagues", "Pendentifs", "Boucles d'oreilles", "",);
+$inden = array("Latest creation", "description_en", "Rings", "Necklaces", "Earrings", "", "", "",);
+
+if ($_SESSION["langage"] == 'en') {
+    $indfr = $inden;
+}
 ?>
 
 <div id="main">
@@ -24,9 +30,11 @@ require_once 'view_parts/_page_base.php';
                 "<figure>".
                     "<img style='width: 700px;' src='images/" .$donne['image']."'>".
                     "<div id='details'>".
-                        "<p>Dernière réalisation</p>".
+                        "<p>".$indfr['0']."</p>".
+
                         "<h3>".$donne['nom'] ."</h3>".
-                        "<figcaption>".$donne['description'] ."</figcaption>".
+
+                        "<figcaption>".$donne[$indfr['1']]."</figcaption>".
                     "</div>".
                 "</figure>";
         ?>
@@ -41,7 +49,7 @@ require_once 'view_parts/_page_base.php';
 
         <!--CATEGORIE 1-->
         <div id="cat1">
-            <a href="?category_id=1">
+            <a href="produits.php?categorie=1">
                 <div id="cercle1" class="cercle">
                     <?php
                     $nbIteration = 0;
@@ -75,7 +83,7 @@ require_once 'view_parts/_page_base.php';
 
                     <!--HOVER APPARITION AU SURVOL-->
                     <div class="hover">
-                        <h3>Bagues</h3>
+                        <h3><?php echo $indfr['2']?></h3>
                     </div>
                 </div>
             </a>
@@ -83,7 +91,7 @@ require_once 'view_parts/_page_base.php';
 
         <!--CATEGORIE 2-->
         <div id="cat2">
-            <a href="?category_id=2">
+            <a href="produits.php?categorie=2">
                 <div id="cercle2" class="cercle">
                     <?php
 
@@ -120,7 +128,7 @@ require_once 'view_parts/_page_base.php';
 
                     <!--HOVER APPARITION AU SURVOL-->
                     <div class="hover">
-                        <h3>Pendentifs</h3>
+                        <h3><?php echo $indfr['3']?></h3>
                     </div>
                 </div>
             </a>
@@ -128,7 +136,7 @@ require_once 'view_parts/_page_base.php';
 
         <!--CATEGORIE 3-->
         <div id="cat3">
-            <a href="?category_id=3">
+            <a href="produits.php?categorie=3">
                 <div id="cercle3" class="cercle">
                     <?php
                     $nbIteration = 0;
@@ -161,7 +169,7 @@ require_once 'view_parts/_page_base.php';
 
                     <!--HOVER APPARITION AU SURVOL-->
                     <div class="hover">
-                        <h3>Boucles d'oreilles</h3>
+                        <h3><?php echo $indfr['4']?></h3>
                     </div>
                 </div>
             </a>
@@ -169,7 +177,7 @@ require_once 'view_parts/_page_base.php';
 
         <!--CATEGORIE 4-->
         <div id="cat4">
-            <a href="?category_id=4">
+            <a href="produits.php?categorie=4">
                 <div id="cercle4" class="cercle">
                     <?php
 
