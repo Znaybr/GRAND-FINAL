@@ -277,14 +277,14 @@ ul{
 }
 
 /*anim on hover*/
-.cercle /*, .cercle2*/ {
+.cercle {
     border-radius:50%;
     box-shadow: 0 0 15px #8bd3e0;
     width: 150px;
     height: 150px;
     margin: 20px 10px;
-    /*background-position:center;*/
-    /*background-size:cover;*/
+    background-position:center;
+    background-size:cover;
 }
 
 
@@ -353,17 +353,45 @@ fieldset > div > div > img,
 /**************************************CONTENU PAGE PRODUITS************************************/
 /***********************************************************************************************/
 h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 500;
     color: #8bd3e0;
-    margin-left: 30%;
     font-family: 'lavanderia_regular';
+    width: 50%;
+}
+
+.cercle2 {
+    border-radius:50%;
+    box-shadow: 0 0 15px #8bd3e0;
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px;
+    background-position:center;
+    background-size:cover;
+}
+
+.cercle2 .hover{
+    text-align: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0,0,0,0.2);
+    display: inline-block;
+    opacity: 0;
+}
+
+.cercle2 .hover:hover{
+    opacity: 1;
 }
 
 #product {
     width: 90%;
     min-height: 800px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
 }
+
 #separation {
     display: inline-block;
     height: 10px;
@@ -372,23 +400,22 @@ h1 {
     -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
     transform: rotate(90deg);
     vertical-align: top;
-    margin-top: 15%;
+    margin-top: 48px;
     margin-left: 3%;
 }
 #productclas {
     display: inline-block;
-    width: 15%;
-    margin-left: 5%;
+    width: 14%;
     vertical-align: top;
 }
 
 #productclas h3 {
-    line-height: 150px;
+    margin: 40px auto 0 auto;
     vertical-align: middle;
     color: white;
-    font-size: 18px;
-    margin: auto;
+    font-size: 14px;
 }
+
 #productclas>div {
     display: inline-block;
     width: 100%;
@@ -396,13 +423,13 @@ h1 {
 }
 #productdetail {
     display: inline-block;
-    width:60%;
-    margin-left: 10%;
+    width: 70%;
+    margin-left: 8%;
     text-align: center;
 }
 .photo {
     display: inline-block;
-    width: 30%;
+    width: calc(100% / 4);
     height: 300px;
     vertical-align: top;
 }
@@ -412,20 +439,30 @@ h1 {
     margin: 0 auto;
 }
 #productdetail h3 {
-    color: #8bd3e0;
+    color: #41676e;
     margin-top: 10px;
     font-family: 'lavanderia_regular';
+    font-size: 25px;
+    text-shadow:
+            0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+            0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+            0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
 }
+
 #productdetail p {
-    margin-top: 20px;
-    color: #41676e;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: -5px;
+    color: #6e6960;
+    text-shadow:
+            0px 0px 6px #FFF,0px 0px 6px #FFF,
+            0px 0px 6px #FFF,0px 0px 6px #FFF,
+            0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
 }
 #productdetail figcaption {
-    margin-top: 160px;
-    color: #c4bdb7;
-    text-shadow: 1px 1px 1px #8bd3e0;
+    width: 80%;
+    margin: 185px auto 0 auto;
+    font-size: 12px;
+    color: white;
+    text-shadow: 1px 1px 1px #000;
 }
 
 
@@ -724,6 +761,49 @@ h1 {
         font-size: 14px;
         color: #c4bdb7;
     }
+
+
+    /*PAGE PRODUITS 960px*/
+
+    #productclas {
+        display: inline-block;
+        width: 20%;
+        vertical-align: top;
+    }
+
+    #productdetail {
+        display: inline-block;
+        width: 70%;
+        margin-left: 2%;
+        text-align: center;
+    }
+
+    #productdetail h3 {
+        color: #41676e;
+        margin-top: 10px;
+        font-family: 'lavanderia_regular';
+        font-size: 20px;
+        text-shadow: 0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px #FFF,0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
+    }
+
+    #productdetail p {
+        margin-top: -5px;
+        color: #6e6960;
+        font-size: 14px;
+        text-shadow: 0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px #FFF,0px 0px 6px #FFF,
+        0px 0px 6px rgb(255, 255, 255),0px 0px 6px rgb(255, 255, 255);
+    }
+
+    .photo {
+        display: inline-block;
+        width: calc(100% / 2);
+        height: 300px;
+        vertical-align: top;
+    }
+
 }
 
 
@@ -982,6 +1062,67 @@ h1 {
         border: 1px solid #c4bdb7;
         color: white;
     }
+
+
+    /*PAGE PRODUITS 640px*/
+
+    #productclas {
+        text-align: center;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    #productclas>div {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #separation {
+        display: none;
+    }
+
+    .cercle2 {
+        border-radius: 50%;
+        box-shadow: 0 0 15px #8bd3e0;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    #productclas>div {
+        display: inline-block;
+        width: 60px;
+        vertical-align: top;
+        margin: 10px;
+    }
+
+    .cercle2 .hover {
+        text-align: center;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0,0,0,0.2);
+        display: inline-block;
+        opacity: 0;
+    }
+
+    #productdetail {
+        display: inline-block;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    #productclas h3 {
+        margin: 20px auto 0 auto;
+        vertical-align: middle;
+        color: white;
+        font-size: 10px;
+    }
+
+
+
+
+
 
 
 

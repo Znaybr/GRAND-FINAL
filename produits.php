@@ -29,10 +29,7 @@ if ($_SESSION["langage"] == 'en') {
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
                         $row["id"];
-
-
                         echo
-
                             "<style>"
                             . "#cercle1{
                     background-image:url("
@@ -41,8 +38,6 @@ if ($_SESSION["langage"] == 'en') {
                     background-position:center;".
                             "}"
                             ."</style>";
-
-
                     }
                     ?>
                     <div class="hover">
@@ -65,14 +60,8 @@ if ($_SESSION["langage"] == 'en') {
 
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
-
-
-
                         $row["id"];
-
-
                         echo
-
                             "<style>"
                             . "#cercle2{
                     background-image:url("
@@ -81,11 +70,6 @@ if ($_SESSION["langage"] == 'en') {
                     background-position:center;".
                             "}"
                             ."</style>";
-
-
-
-
-
                     }
 
                     ?>
@@ -106,8 +90,6 @@ if ($_SESSION["langage"] == 'en') {
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
                         $row["id"];
-
-
                         echo
 
                             "<style>"
@@ -118,11 +100,6 @@ if ($_SESSION["langage"] == 'en') {
                     background-position:center;".
                             "}"
                             ."</style>";
-
-
-
-
-
                     }
                     ?>
                     <div class="hover">
@@ -142,10 +119,7 @@ if ($_SESSION["langage"] == 'en') {
                     while ($row = $results->fetch(PDO::FETCH_ASSOC))
                     {
                         $row["id"];
-
-
                         echo
-
                             "<style>"
                             . "#cercle4{
                     background-image:url("

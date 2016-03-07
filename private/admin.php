@@ -1,7 +1,6 @@
 <?php
 require_once '../db/P62_DBkitDem_conn.php';
 require_once '../_defines.php';
-require_once '../data/_main_data.php';
 
 define('UPLOAD_TARGET_DIR' ,"../images/"); // Répertoire des uploads d'images
 
@@ -322,15 +321,15 @@ if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload
 <script src="../js/main.js"></script>
 
 <!--FONCTION LOGIN/LOGOUT ADMIN-->
-<!--    --><?php
-//    if (isset($_POST["password"])){
-//        if ($_POST["password"] = "egypte2015"){
-//            echo "<script>
-//                $(infos_admin).show();
-//            </script>";
-//        }
-//    }
-//    ?>
+<?php
+    if (isset($_POST["password"])){
+        if ($_POST["password"] = "egypte2016"){
+            echo "<script>
+                $(infos_admin).show();
+            </script>";
+        }
+    }
+    ?>
 
 </body>
 </html>
