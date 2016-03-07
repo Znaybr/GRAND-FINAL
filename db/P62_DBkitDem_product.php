@@ -15,38 +15,44 @@ require_once('P62_DBkitDem_common.php');
  */
 define('PRODUCT_TB_COL_ID', 'id');
 define('PRODUCT_TB_COL_NOM', 'nom');
-define('PRODUCT_TB_COL_COURRIEL', 'description');
-define('PRODUCT_TB_COL_TELEPHONE', 'illustration');
-define('PRODUCT_TB_COL_VILLE', 'categorie');
-define('PRODUCT_TB_COL_SEXE', 'materiaux');
+define('PRODUCT_TB_COL_DESCRIPTION', 'description');
+define('PRODUCT_TB_COL_DESCRIPTION_EN', 'description_en');
+define('PRODUCT_TB_COL_IMAGE', 'image');
+define('PRODUCT_TB_COL_CATEGORIE', 'categorie');
+define('PRODUCT_TB_COL_MATIERE', 'materiaux');
+define('PRODUCT_TB_COL_MATIERE_EN', 'materiaux_en');
 $product_tb_cols = array(
     PRODUCT_TB_COL_ID,
     PRODUCT_TB_COL_NOM,
-    PRODUCT_TB_COL_COURRIEL,
-    PRODUCT_TB_COL_TELEPHONE,
-    PRODUCT_TB_COL_VILLE,
-    PRODUCT_TB_COL_SEXE,
+    PRODUCT_TB_COL_DESCRIPTION,
+    PRODUCT_TB_COL_DESCRIPTION_EN,
+    PRODUCT_TB_COL_IMAGE,
+    PRODUCT_TB_COL_CATEGORIE,
+    PRODUCT_TB_COL_MATIERE,
+    PRODUCT_TB_COL_MATIERE_EN,
 );
 
 /**
  *  Insertion (ajout) d'un nouveau produit
  */
-function product_add($nom, $description, $illustration, $categorie, $materiaux) {
+function product_add($nom, $description, $description_en, $image, $categorie, $materiaux,  $materiaux_en) {
     global $pdo, $product_tb_cols;
     $resultat = false; // Mode défensif
     $queryStr = 'INSERT INTO ' . P62_DBKITDEM_TB_PRODUCT . '(' . get_tb_cols($product_tb_cols) . ') VALUES (' . get_tb_cols($product_tb_cols, COLON_CAR) . ')';
     $sth = $pdo->prepare($queryStr);
     $params = array(
         COLON_CAR . PRODUCT_TB_COL_NOM => $nom,
-        COLON_CAR . PRODUCT_TB_COL_COURRIEL => $description,
-        COLON_CAR . PRODUCT_TB_COL_TELEPHONE => $illustration,
-        COLON_CAR . PRODUCT_TB_COL_VILLE => $categorie,
-        COLON_CAR . PRODUCT_TB_COL_SEXE => $materiaux,
+        COLON_CAR . PRODUCT_TB_COL_DESCRIPTION => $description,
+        COLON_CAR . PRODUCT_TB_COL_DESCRIPTION_EN => $description_en,
+        COLON_CAR . PRODUCT_TB_COL_IMAGE => $image,
+        COLON_CAR . PRODUCT_TB_COL_CATEGORIE => $categorie,
+        COLON_CAR . PRODUCT_TB_COL_MATIERE => $materiaux,
+        COLON_CAR . PRODUCT_TB_COL_MATIERE_EN => $materiaux_en,
     );
     $res = $sth->execute($params);
-    $sth->debugDumpParams();
-    var_dump($params);
-    var_dump($res);
+//    $sth->debugDumpParams();
+//    var_dump($params);
+//    var_dump($res);
     if ( ! $res || ($sth->rowCount()  == 0)) {
         throw new Exception("Echec lors de la tentative d'ajout du produit $nom : (" . $sth->errorInfo()[0] . ")<br/>");
     }
@@ -96,7 +102,7 @@ function product_list($category_id = false, $name = false) {
     $resultat = false; // Par défaut n'existe pas
     $queryStr = 'SELECT * FROM ' . P62_DBKITDEM_TB_PRODUCT;
     if (false !== $category_id) {
-        $queryStr .= ' WHERE ' . get_tb_col_pair(PRODUCT_TB_COL_VILLE);
+        $queryStr .= ' WHERE ' . get_tb_col_pair(PRODUCT_TB_COL_CATEGORIE);
     }
     if (false !== $name) {
         $queryStr .= (strpos($queryStr, 'WHERE') > 0) ? ' AND ' : ' WHERE '; // Suivant qu'une clause WHERE est déjà présente
@@ -106,7 +112,7 @@ function product_list($category_id = false, $name = false) {
         $sth = $pdo->prepare($queryStr);
         $params = array();
         if (false !== $category_id) {
-            $params[COLON_CAR . PRODUCT_TB_COL_VILLE] = $category_id;
+            $params[COLON_CAR . PRODUCT_TB_COL_CATEGORIE] = $category_id;
         }
         if (false !== $name) {
             $params[COLON_CAR . PRODUCT_TB_COL_NOM] = '%' . $name . '%';

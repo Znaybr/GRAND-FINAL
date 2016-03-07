@@ -20,15 +20,15 @@ require_once 'view_parts/_page_base.php';
         $results = $pdo->prepare($query);
         $results->execute();
         $donne = $results->fetch();
-                        echo
-                "<div id= 'image_index' >" .
-                    "<figure><img style='width: 700px;' src='images/" .$donne['illustration']."'></figure>".
-                "</div>".
-                "<div id='details'>".
-                    "<p>Dernière réalisation</p>".
-                    "<h3>".$donne['nom'] ."</h3>".
-                    "<figcaption>".$donne['description'] ."</figcaption>".
-                "</div>";
+            echo
+                "<figure>".
+                    "<img style='width: 700px;' src='images/" .$donne['illustration']."'>".
+                    "<div id='details'>".
+                        "<p>Dernière réalisation</p>".
+                        "<h3>".$donne['nom'] ."</h3>".
+                        "<figcaption>".$donne['description'] ."</figcaption>".
+                    "</div>".
+                "</figure>";
         ?>
 
     </section>
@@ -66,7 +66,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle1{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
@@ -109,7 +109,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle2{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
@@ -152,7 +152,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle3{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
@@ -195,7 +195,7 @@ require_once 'view_parts/_page_base.php';
                             "<style>"
                             . "#cercle4{
                             background-image:url("
-                            ." '" ."images". "/".$row['illustration']." ');
+                            ." '" ."images". "/".$row['image']." ');
                             background-size: cover;".
                             "}"
                             ."</style>";
