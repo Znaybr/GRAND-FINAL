@@ -6,8 +6,15 @@ require_once 'common/start.php';
 require_once 'data/_main_data.php';
 $site_data[PAGE_ID] = 'index';
 require_once 'view_parts/_page_base.php';
+
+$prodfr = array("Les plus belles créations d'Élise", "", "", "", "",);
+$proden = array("The most beautiful creations of Elise", "", "", "", "",);
+
+if ($_SESSION["langage"] == 'en') {
+    $prodfr = $proden;
+}
 ?>
-<h1>Les plus belles créations d'Élise</h1>
+<h1><?php echo $prodfr['0']?></h1>
 <div id="product">
 
     <div id="productclas">
