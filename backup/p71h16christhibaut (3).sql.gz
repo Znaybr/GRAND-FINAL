@@ -1,0 +1,134 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Client :  127.0.0.1
+-- Généré le :  Lun 07 Mars 2016 à 16:48
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `p71h16christhibaut`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(25) NOT NULL COMMENT 'nom de la catégorie',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `categories`
+--
+
+INSERT INTO `categories` (`id`, `nom`) VALUES
+(1, 'bagues'),
+(2, 'colliers'),
+(3, 'boucles'),
+(4, 'bracelets');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID unique de chaque message',
+  `prenom` varchar(50) NOT NULL COMMENT 'prénom du contact',
+  `nom` varchar(50) NOT NULL COMMENT 'nom du contact',
+  `courriel` varchar(50) NOT NULL COMMENT 'courriel de réponse',
+  `telephone` varchar(24) DEFAULT NULL COMMENT 'téléphone (optionnel)',
+  `ville` varchar(50) DEFAULT NULL COMMENT 'ville (optionnel)',
+  `sexe` enum('homme','femme','','') DEFAULT NULL,
+  `preference` varchar(150) DEFAULT NULL,
+  `message` varchar(1024) NOT NULL COMMENT 'message recu',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+
+--
+-- Contenu de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `prenom`, `nom`, `courriel`, `telephone`, `ville`, `sexe`, `preference`, `message`) VALUES
+(11, 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'homme', 'dfgdfgdgdfgdf', 'sdsdfdssdfsdfsfsfsdf');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits`
+--
+
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id de chaque produit',
+  `nom` varchar(50) NOT NULL COMMENT 'nom du produit',
+  `description` varchar(1200) NOT NULL COMMENT 'description détaillée du produit',
+  `description_en` varchar(1200) NOT NULL,
+  `image` varchar(50) NOT NULL COMMENT 'image correspondant au produit',
+  `categorie` int(11) NOT NULL COMMENT 'catégorie du produit',
+  `materiaux` varchar(126) NOT NULL COMMENT 'matériaux utilisés pour la création',
+  `materiaux_en` varchar(126) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categorie` (`categorie`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+
+--
+-- Contenu de la table `produits`
+--
+
+INSERT INTO `produits` (`id`, `nom`, `description`, `description_en`, `image`, `categorie`, `materiaux`, `materiaux_en`) VALUES
+(1, 'bague en argent sterling', 'Magnifique fine bague en argent sterling', 'verry beautyful silver ring ', 'bague_arg_ster.jpg', 1, 'argent', 'silver'),
+(2, 'renaissance', 'Bague en argent et en cuivre', 'Ring in silver and copper', 'arg_cuivre.jpg', 1, 'argent et cuivre', 'silver and copper'),
+(3, 'métempsycose', 'Bague en argent et émail', 'Ring in silver and enamel', 'argent_email.jpg', 1, 'argent et émail', 'silver and enamel'),
+(4, 'orient', 'Bracelet en argent avec Zircon et perle blanche', 'Silver Bracelet with Diamond and Pearl White', 'bracelet1r.jpg', 4, 'argent et pierre', 'diamond and pearl'),
+(5, 'réapparition', 'Boucle d''oreille en argent oxydé', 'Oxidized silver earring', 'argent_oxyde2.jpg', 3, 'argent', 'silver'),
+(6, 'recrudescence', 'Fine bague en argent', 'Fine silver ring', 'bague_argent.JPG', 1, 'argent', 'silver'),
+(7, 'joyau', 'Bague en argent sterling', 'Silver ring', 'argent_sterling.jpg', 1, 'argent', 'silver'),
+(8, 'pleurote', 'Ensemble de ballonnets d''argent en forme de champignon', 'Together with silver balloons shaped champi ...', 'bague_champignon.jpg', 1, 'argent', 'silver'),
+(9, 'magie', 'Bague en argent sterling avec une néphrite sertie', 'sterling silver ring with a crimped nephritis', 'bague_nephrite.jpg', 1, 'argent et pierre', 'silver and stone'),
+(10, 'frison', 'Boucles d''oreilles en argent et oxydées', 'sterling silver ring with a crimped nephritis...', 'bcl_arg_oxyde.jpg', 3, 'argent', 'silver'),
+(12, 'brillance', 'Boucles d''oreilles en argent sterling martelé', 'Earrings Sterling Silver Hammered', 'boucle_argent.jpg', 3, 'argent', 'silver'),
+(13, 'passion', 'Boucles d''oreilles en argent oxydé', 'Earrings in oxidized silver', 'boucle_oxydee.jpg', 3, 'argent', 'silver'),
+(14, 'saphir', 'Boucles d''oreilles en perles saphir', 'Earrings sapphire beads', 'boucle_perle.jpg', 3, 'pierre et argent', 'silver and stone'),
+(15, 'ombres', 'Boucles d''oreilles en argent oxydées', 'Earrings oxidized silver earrings', 'boucles_noires.jpg', 3, 'argent', 'silver'),
+(16, 'cube', 'Pendentif en forme de cube', 'Pendant cube', 'cube.jpg', 2, 'argent', 'silver'),
+(17, 'quattros', 'Collier en argent avec pendentif en cube', 'Collier en argent avec pendentif en cube', 'cube_argent.jpg', 2, 'argent', 'silver'),
+(18, 'émoi', 'Bague en argent avec émeraude', 'Pendant cube', 'emeraude.jpg', 1, 'pierre et argent', 'silver and stone'),
+(19, 'nature', 'Pendentif en argent. Mélange de l''art et de la nature', 'Silver pendant . Blend of art and nat ...', 'la_foret.jpg', 2, 'argent', 'silver'),
+(20, 'nouveau départ', 'Bague stylée en argent', 'Stylish silver ring', 'le_depart.jpg', 1, 'argent', 'silver'),
+(21, 'Main de pierre', 'Collier et pendentif en argent en forme de main', 'Necklace and pendant in hand-shaped silver', 'maindepierre.jpg', 2, 'argent', 'silver'),
+(22, 'origine', 'Pendentif en argent', 'Silver Pendant', 'pendentif_ancien.jpg', 2, 'argent', 'silver'),
+(23, 'crible', 'Pendentif en argent garni avec deux perles d''eau douce', 'Silver pendant trimmed with two water pearls ...', 'pendentif_perles.jpg', 2, 'pierre et argent', 'silver and stone'),
+(24, 'brillance', 'Pendentif sculpté en argent garni d''une superbe perle blanche et d''un émeraude', 'Pendant carved silver adorned with a beautiful white pearl and emerald', 'perle_blanche.jpg', 2, 'pierre et argent', 'Silver ans stone'),
+(26, 'azur', 'Superbe pendentif en argent finement sculpté', 'Superb pendant intricately carved silver', 'azur.jpg', 2, 'argent et pierre', 'silver and stone'),
+(27, 'panier', 'Superbe collier en perles d''argent avec pendentif en forme de petit sac', 'Beautiful necklace of silver beads with pendant ...', 'panier.jpg', 2, 'pierre et argent', 'Silver and stone'),
+(28, 'orient', 'Pendentifs en argent avec une partie oxydée avec un fil en or. Chacun garnis d''une perle ou d''une pierre', 'Sterling silver with an oxidized part with u ..', 'pendentif_fil_or.jpg', 2, 'pierre et argent', 'silver and stone');
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `produits`
+--
+ALTER TABLE `produits`
+  ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`categorie`) REFERENCES `categories` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
