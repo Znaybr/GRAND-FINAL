@@ -1,4 +1,5 @@
 <?php
+//require_once ;
 $in_post=array_key_exists("register", $_POST); // Savoir si le formulaire est en soumission/reception
 //$in_post = ('POST' == $_SERVER['REQUEST_METHOD']); // Definie la reception en POST
 //var_dump($_POST);
@@ -102,16 +103,15 @@ if (array_key_exists("text_message", $_POST)) {
 }
 
 
-
+//var_dump($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message);
 
 //**************************************VALIDATION ET ENVOI DANS LA BDD*************************************************
 if ($prenom_ok && $nom_ok && $courriel_ok && $telephone_ok && $message_ok/*true*/){
     //on enregistre les données et s'en va sur une autres page
-    require_once "db/P62_DBkitDem_messages.php";
     $message_info = message_add($prenom, $nom, $courriel, $telephone, $ville, $sexe, $preference, $message);
 //    $message_info = message_add('dfdf', 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'homme', 'dfgdfgdgdfgdf', 'sdsdfdssdfsdfsfsfsdf');
     header("Location: index.php");
-   exit;
+    exit;
 }
 
 $contactfr = array("Contactez-nous", "Laissez nous un message, vos questions ainsi que vos coordonnées, nous vous répondrons prochainement.", "Prénom", "Nom", "Courriel", "Téléphone", "Ville", "Femme", "Homme", "Bagues", "Pendentifs", "Boucles d'oreilles", "Sexe", "Envoyer",);

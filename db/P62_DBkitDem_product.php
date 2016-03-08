@@ -9,7 +9,6 @@
 require_once('P62_DBkitDem_conn.php');
 require_once('P62_DBkitDem_common.php');
 
-
 /**
  * Liste des colonnes de la table product
  */
@@ -53,80 +52,14 @@ function product_add($nom, $description, $description_en, $image, $categorie, $m
 //    $sth->debugDumpParams();
 //    var_dump($params);
 //    var_dump($res);
-    if ( ! $res || ($sth->rowCount()  == 0)) {
-        throw new Exception("Echec lors de la tentative d'ajout du produit $nom : (" . $sth->errorInfo()[0] . ")<br/>");
+    if ( ! $res || ($sth->rowCount()  == 0) ) {
+        $errorInfo = $sth->errorInfo();
+        $errorInfo = $errorInfo[0];
+        throw new Exception("Echec lors de la tentative d'ajout du message $nom : (" . $errorInfo . ")<br/>");
     }
     $inserted_user_id = $pdo->lastInsertId();
     if ($res) {
         $resultat = $inserted_user_id;
     };
-    return $resultat;
-}
-
-
-/**
- * Lister (parcourir) les catégories de produits
- * @return array
- */
-function product_category_list() {
-    global $pdo;
-    $resultat = false; // Par défaut n'existe pas
-    $queryStr = 'SELECT * FROM ' . P62_DBKITDEM_TB_PRODUCT_CATEGORY;
-    try {
-        $sth = $pdo->prepare($queryStr);
-        $params = array();
-        $res = $sth->execute($params);
-//        $sth->debugDumpParams();
-//        var_dump($res);
-//        var_dump($sth->rowCount());
-    } catch (PDOException $e) {
-        echo "Echec tentative lister les catégories de produits : (" . $e->getMessage() . ')<br/>';
-        exit();
-    }
-    if ($res) {
-        $resultat = $sth->fetchALL(PDO::FETCH_KEY_PAIR); // Permet d'avoir la colonne 0 (id) en clef, la colonne 1 (name) en valeur
-    }
-    return $resultat;
-}
-
-
-/**
- * Lister (parcourir) ou rechercher les produits
- * NB : Pas de limite mise en place ici (à améliorer si le nb de produits devient important
- * @param bool|int $category_id: Catégorie du produit, false pour toutes les catégories
- * @param bool|string $name: Nom du produit ou partie de ce nom (operateur %like%)
- * @return bool|mixed
- */
-function product_list($category_id = false, $name = false) {
-    global $pdo;
-    $resultat = false; // Par défaut n'existe pas
-    $queryStr = 'SELECT * FROM ' . P62_DBKITDEM_TB_PRODUCT;
-    if (false !== $category_id) {
-        $queryStr .= ' WHERE ' . get_tb_col_pair(PRODUCT_TB_COL_CATEGORIE);
-    }
-    if (false !== $name) {
-        $queryStr .= (strpos($queryStr, 'WHERE') > 0) ? ' AND ' : ' WHERE '; // Suivant qu'une clause WHERE est déjà présente
-        $queryStr .= get_tb_col_pair(PRODUCT_TB_COL_NOM, 'LIKE');
-    }
-    try {
-        $sth = $pdo->prepare($queryStr);
-        $params = array();
-        if (false !== $category_id) {
-            $params[COLON_CAR . PRODUCT_TB_COL_CATEGORIE] = $category_id;
-        }
-        if (false !== $name) {
-            $params[COLON_CAR . PRODUCT_TB_COL_NOM] = '%' . $name . '%';
-        }
-        $res = $sth->execute($params);
-//        $sth->debugDumpParams();
-//        var_dump($res);
-//        var_dump($sth->rowCount());
-    } catch (PDOException $e) {
-        echo "Echec tentative lister produits pour catégorie $category_id : (" . $e->getMessage() . ')<br/>';
-        exit();
-    }
-    if ($res && ($sth->rowCount() > 0)) {
-        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
-    }
     return $resultat;
 }

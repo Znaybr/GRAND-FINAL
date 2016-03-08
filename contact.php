@@ -1,5 +1,6 @@
 <?php
-require_once 'db/P62_DBkitDem_conn.php';
+require_once 'db/P62_DBkitDem_messages.php';
+
 require_once '_defines.php';
 require_once 'common/start.php';
 require_once 'data/_main_data.php';

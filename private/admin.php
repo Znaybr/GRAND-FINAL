@@ -1,6 +1,11 @@
 <?php
-require_once '../db/P62_DBkitDem_conn.php';
+
 require_once '../_defines.php';
+
+//require_once dirname(__FILE__).'/../db/P62_DBkitDem_conn.php';
+require_once '../db/P62_DBkitDem_conn.php';
+
+//var_dump("ici");
 
 define('UPLOAD_TARGET_DIR' ,"../images/"); // Répertoire des uploads d'images
 
@@ -113,7 +118,6 @@ if (array_key_exists('image_files', $_FILES)) {
         $upload_valid = false;
     }
 
-
     // Check file size
     if ($_FILES["image_files"]["size"] > 500000) {
         $upload_error_msg .= '<br>Le fichier trop gros : (La taille maximale est 500000 octets).';
@@ -136,13 +140,15 @@ if (array_key_exists('image_files', $_FILES)) {
 
 }
 //var_dump($nom_ok, $categorie_ok, $description_ok, $description_en_ok, $upload_valid, $materiaux_ok, $materiaux_en_ok);
-
+//
 if ($nom_ok && $categorie_ok && $description_ok && $description_en_ok && $upload_valid && $materiaux_ok && $materiaux_en_ok){
     //on enregistre les données sur la BD et redirection sur page index
-    require_once "../db/P62_DBkitDem_product.php";
+   require_once "../db/P62_DBkitDem_product.php";
     $produit_info = product_add($nom, $description, $description_en, $image, $categorie, $materiaux, $materiaux_en);
+
     header("Location: admin.php");
     exit;
+
 }
 
 ?>

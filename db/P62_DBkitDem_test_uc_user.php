@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  *  Script de test des opérations principales sur les utilisateurs de la base de données p62_dbkitdem
  * 	- authentification d'un utilisateur
